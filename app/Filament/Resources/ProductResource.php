@@ -180,9 +180,15 @@ class ProductResource extends Resource
                                     ->disk('s3')
                                     ->directory('products')
                                     ->acceptedFileTypes(['application/pdf', 'video/*'])
+                                    ->maxSize(10240)
+                                    ->validationMessages([
+                                        'max'   => 'Le fichier est trop lourd. Taille maximale autorisée : 10 Mo.',
+                                        'mimes' => 'Seuls les formats PDF et vidéo sont acceptés.',
+                                    ])
                                     ->downloadable()
                                     ->openable()
                                     ->previewable(false)
+                                    ->helperText('PDF ou vidéo · 10 Mo max.')
                                     ->visible(fn (Forms\Get $get) => ($get('type') ?? 'image') !== 'image'),
 
                                 // Le texte alternatif et le titre sont définis dans la médiathèque

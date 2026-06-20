@@ -27,7 +27,7 @@ class MediaResource extends Resource
     {
         return $form->schema([
             Forms\Components\Section::make('Fichier')
-                ->description('Formats PNG, JPG, WEBP — recadrage et redimensionnement disponibles via l\'éditeur.')
+                ->description('Formats acceptés : PNG, JPG, WEBP — taille maximale 4 Mo.')
                 ->schema([
                     Forms\Components\FileUpload::make('path')
                         ->label('')
@@ -38,9 +38,13 @@ class MediaResource extends Resource
                         ->imageEditorAspectRatios([null, '16:9', '4:3', '1:1'])
                         ->imageEditorMode(2)
                         ->maxSize(4096)
+                        ->validationMessages([
+                            'max'   => 'L\'image est trop lourde. Taille maximale autorisée : 4 Mo.',
+                            'image' => 'Le fichier doit être une image au format PNG, JPG ou WEBP.',
+                        ])
                         ->required()
                         ->storeFileNamesIn('filename')
-                        ->helperText('Cliquez sur le crayon après l\'upload pour recadrer ou redimensionner.'),
+                        ->helperText('PNG, JPG ou WEBP · 4 Mo max. Cliquez sur le crayon pour recadrer ou redimensionner.'),
                 ]),
 
             Forms\Components\Section::make('Métadonnées')
