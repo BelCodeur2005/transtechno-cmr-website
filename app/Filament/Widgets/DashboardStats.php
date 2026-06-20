@@ -52,11 +52,15 @@ class DashboardStats extends BaseWidget
 
     private function produitsStat(): Stat
     {
-        $actifs = Product::where('status', 'actif')->count();
-        $reactifs = Product::where('status', 'actif')->where('product_type', 'reactif')->count();
+        $actifs    = Product::where('status', 'actif')->count();
+        $equipements = Product::where('status', 'actif')->whereIn('product_type', ['equipement', 'consommable'])->count();
+        $reactifs  = Product::where('status', 'actif')->where('product_type', 'reactif')->count();
+
+        $desc = $equipements . ' équipement' . ($equipements > 1 ? 's' : '')
+              . ' · ' . $reactifs . ' réactif' . ($reactifs > 1 ? 's' : '') . ' ABM';
 
         return Stat::make('Produits au catalogue', number_format($actifs, 0, ',', ' '))
-            ->description($reactifs . ' réactif' . ($reactifs > 1 ? 's' : '') . ' ABM')
+            ->description($desc)
             ->descriptionIcon('heroicon-m-cube')
             ->color('primary')
             ->icon('heroicon-o-cube')
