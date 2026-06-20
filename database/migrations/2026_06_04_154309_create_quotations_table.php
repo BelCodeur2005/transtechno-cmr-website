@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('structure_name');
             $table->string('city');
             $table->enum('sector', ['Privé', 'Public', 'ONG', 'Recherche'])->default('Privé');
+            $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->text('specifications')->nullable();
             $table->boolean('is_urgent')->default(false);

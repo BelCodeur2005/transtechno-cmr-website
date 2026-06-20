@@ -12,7 +12,6 @@ return new class extends Migration
             $table->id();
             $table->string('reference')->unique();
             $table->foreignId('client_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('equipment_id')->nullable()->constrained('equipment_inventory')->nullOnDelete();
             $table->text('description');
             $table->enum('status', ['Ouvert', 'En cours', 'Résolu', 'Clôturé'])->default('Ouvert');
             $table->enum('priority', ['Normal', 'Critique', 'Urgent'])->default('Normal');

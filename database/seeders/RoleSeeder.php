@@ -19,11 +19,11 @@ class RoleSeeder extends Seeder
                 ?: throw new \RuntimeException("SEED_ADMIN_PASSWORD not set in .env");
 
             $kamga = User::firstOrCreate(
-                ["email" => "transtechno.cm@gmail.com"],
+                ["email" => "office@transtechno-cmr.com"],
                 ["name" => "Kamga", "password" => Hash::make($password)]
             );
             $kamga->assignRole("super_admin");
             $kamga->assignRole("commercial");
         }
-    }
+        }
 }

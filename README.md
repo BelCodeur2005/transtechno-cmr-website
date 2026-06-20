@@ -1,59 +1,181 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Transtechno Cameroun — Site Web
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Site B2B de vente d'équipements médicaux, scientifiques et de laboratoire. Fondée en 2016 à Douala, Cameroun. Agréée Minsanté (arrêté N° 0683), certifiée OMS.
 
-## About Laravel
+## Stack technique
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+| Couche | Technologie |
+|---|---|
+| Framework | Laravel 12 |
+| Frontend | Inertia.js v2 + React (TypeScript) + Vite |
+| Admin | Filament PHP v3 |
+| Base de données | MySQL |
+| Stockage fichiers | N0C Storage (S3-compatible, inclus PlanetHoster) |
+| Cache / Queue | Redis (instance dédiée PlanetHoster) |
+| Recherche | MySQL Full-Text Search via Laravel Scout |
+| PDF | barryvdh/laravel-dompdf |
+| Email | SMTP PlanetHoster |
+| Hébergement | PlanetHoster — Plan "The World" (cPanel, SSH) |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Prérequis
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP 8.2+
+- Composer 2+
+- Node.js 22+ / npm 11+
+- MySQL 8+
 
-## Learning Laravel
+## Installation locale
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+```bash
+# 1. Dépendances PHP
+composer install
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# 2. Variables d'environnement
+cp .env.example .env
+php artisan key:generate
 
-## Laravel Sponsors
+# 3. Base de données
+# Configurer DB_* dans .env puis :
+php artisan migrate --seed
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# 4. Lien de stockage public
+php artisan storage:link
 
-### Premium Partners
+# 5. Dépendances JS + build
+npm install
+npm run dev
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Seeds utiles
 
-## Contributing
+```bash
+# Données de démo complètes (rôles, utilisateur admin, partenaires, catégories)
+php artisan db:seed
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Logos des partenaires seulement
+php artisan db:seed --class=BrandSeeder
 
-## Code of Conduct
+# Permissions Filament Shield (à relancer après ajout de ressources)
+php artisan shield:generate --all
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Compte admin par défaut (local)
 
-## Security Vulnerabilities
+| Champ | Valeur |
+|---|---|
+| Email | `admin@transtechno.cm` |
+| Mot de passe | `password` |
+| URL | `http://localhost/admin` |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+> Changer impérativement le mot de passe avant déploiement en production.
 
-## License
+## Structure des dossiers clés
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+app/
+  Filament/Resources/   — Ressources admin (CRUD Filament)
+  Http/Controllers/     — Contrôleurs publics (Inertia)
+  Models/               — Modèles Eloquent
+
+resources/
+  js/
+    Pages/Public/       — Pages publiques React (Inertia)
+    Pages/Admin/        — Pages admin React si besoin
+    Layouts/            — PublicLayout, AuthLayout
+  views/
+    livewire/           — Composants Livewire (ex. médiathèque)
+
+database/
+  migrations/           — Schéma de la base
+  seeders/              — Données initiales
+
+public/
+  partner-logos/        — Logos partenaires (source pour BrandSeeder)
+  images/               — Logo, favicon, images statiques
+
+docs/
+  guide-admin.md        — Guide complet d'utilisation du back-office
+  roles-permissions.md  — Documentation des rôles et permissions
+```
+
+## Variables d'environnement importantes
+
+```env
+# Application
+APP_URL=https://transtechno.cm
+
+# Base de données
+DB_CONNECTION=mysql
+DB_DATABASE=transtechno
+
+# Stockage S3 (N0C Storage PlanetHoster)
+FILESYSTEM_DISK=s3
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=
+AWS_BUCKET=
+AWS_ENDPOINT=
+AWS_URL=
+
+# Redis
+CACHE_STORE=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis
+REDIS_HOST=
+REDIS_PASSWORD=
+REDIS_PORT=6379
+
+# Email SMTP
+MAIL_MAILER=smtp
+MAIL_HOST=
+MAIL_PORT=587
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_FROM_ADDRESS=contact@transtechno.cm
+MAIL_FROM_NAME="Transtechno Cameroun"
+```
+
+## Déploiement sur PlanetHoster
+
+```bash
+# Sur le serveur via SSH
+
+# 1. Copier les fichiers (sans node_modules/ ni vendor/)
+# 2. Installer les dépendances PHP en production
+composer install --no-dev --optimize-autoloader
+
+# 3. Build des assets JS (à faire en local, puis uploader public/build/)
+npm run build
+
+# 4. Migrations + optimisation
+php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
+# 5. Permissions de stockage
+php artisan storage:link
+chmod -R 775 storage bootstrap/cache
+```
+
+**Cron cPanel** — ajouter cette tâche (toutes les minutes) :
+```
+* * * * * php /home/USER/public_html/artisan schedule:run >> /dev/null 2>&1
+* * * * * php /home/USER/public_html/artisan queue:work --stop-when-empty >> /dev/null 2>&1
+```
+
+## Modules fonctionnels
+
+- **Catalogue produits** — équipements médicaux + réactifs ABM, 33 catégories, filtres
+- **Fiche produit** — galerie, spécifications techniques, demande de devis
+- **Système de devis** — panier → formulaire → récapitulatif → traitement admin
+- **Actualités** — articles avec éditeur riche, catégories, tags, SEO complet
+- **Services & SAV** — pôle hémodialyse, tickets d'intervention
+- **Back-office Filament** — gestion cotations, catalogue, actualités, médiathèque, rôles
+- **Sitemap XML** — `/sitemap.xml` (articles, produits, catégories, pages statiques)
+
+## Contacts projet
+
+- **Client :** Transtechno Cameroun — transtechno.cm@gmail.com
+- **Tél :** +237 674 64 53 54 / 699 67 40 36
+- **Guide admin :** voir `docs/guide-admin.md`

@@ -6,6 +6,88 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Carrousel partenaires (défilement continu) */
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+.animate-marquee {
+    animation: marquee 35s linear infinite;
+}
+.marquee-group:hover .animate-marquee {
+    animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+    .animate-marquee { animation: none; }
+}
+
+/* Contenu riche des actualités (rédigé via l'éditeur Filament).
+   Tailwind preflight réinitialise titres/listes/gras : on restaure la typographie ici. */
+.article-content {
+    color: #3a6090;
+    line-height: 1.75;
+}
+.article-content > :first-child { margin-top: 0; }
+.article-content p { margin-bottom: 1rem; }
+.article-content h1,
+.article-content h2 {
+    color: #004A80;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+.article-content h3 {
+    color: #3a6090;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.article-content h4 {
+    color: #3a6090;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 1.25rem;
+    margin-bottom: 0.4rem;
+}
+.article-content ul,
+.article-content ol {
+    margin: 0 0 1rem 0;
+    padding-left: 1.5rem;
+}
+.article-content ul { list-style: disc; }
+.article-content ol { list-style: decimal; }
+.article-content li { margin-bottom: 0.35rem; }
+.article-content a {
+    color: #006099;
+    text-decoration: underline;
+    font-weight: 500;
+    word-break: break-word;
+}
+.article-content a:hover { color: #004A80; }
+.article-content strong, .article-content b { font-weight: 700; color: #1a3556; }
+.article-content em, .article-content i { font-style: italic; }
+.article-content blockquote {
+    border-left: 4px solid #ba0013;
+    padding: 0.25rem 0 0.25rem 1rem;
+    margin: 1rem 0;
+    color: #5d3f3c;
+    font-style: italic;
+}
+.article-content img {
+    border-radius: 0.5rem;
+    margin: 1.25rem 0;
+    max-width: 100%;
+    height: auto;
+}
+.article-content hr {
+    border: 0;
+    border-top: 1px solid #e7bdb8;
+    margin: 1.5rem 0;
+}
+
 @layer base {
     html {
         font-family: 'Inter', sans-serif;

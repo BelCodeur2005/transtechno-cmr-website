@@ -22,3 +22,13 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Windows crash dumps
+*.stackdump
+
+# Fichiers de test et temporaires
+/public/test-devis.pdf
+/public/test-s3-*
+
+# Logs générés automatiquement
+shield-gen.log

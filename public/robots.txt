@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /admin/*
+
+Sitemap: https://transtechno-cmr.com/sitemap.xml
