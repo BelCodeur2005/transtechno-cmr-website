@@ -34,9 +34,6 @@ class MediaResource extends Resource
                         ->image()
                         ->disk('s3')
                         ->directory('media')
-                        ->imageEditor()
-                        ->imageEditorAspectRatios([null, '16:9', '4:3', '1:1'])
-                        ->imageEditorMode(2)
                         ->maxSize(4096)
                         ->validationMessages([
                             'max'   => 'L\'image est trop lourde. Taille maximale autorisée : 4 Mo.',
@@ -44,7 +41,7 @@ class MediaResource extends Resource
                         ])
                         ->required()
                         ->storeFileNamesIn('filename')
-                        ->helperText('PNG, JPG ou WEBP · 4 Mo max. Cliquez sur le crayon pour recadrer ou redimensionner.'),
+                        ->helperText('PNG, JPG ou WEBP · 4 Mo max. Résolution recommandée : 800 × 800 px minimum pour un affichage net.'),
                 ]),
 
             Forms\Components\Section::make('Métadonnées')
