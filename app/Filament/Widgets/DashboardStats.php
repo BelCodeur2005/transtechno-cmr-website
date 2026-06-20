@@ -57,7 +57,7 @@ class DashboardStats extends BaseWidget
         $reactifs  = Product::where('status', 'actif')->where('product_type', 'reactif')->count();
 
         $desc = $equipements . ' équipement' . ($equipements > 1 ? 's' : '')
-              . ' · ' . $reactifs . ' réactif' . ($reactifs > 1 ? 's' : '') . ' ABM';
+              . ' · ' . $reactifs . ' réactif' . ($reactifs > 1 ? 's' : '');
 
         return Stat::make('Produits au catalogue', number_format($actifs, 0, ',', ' '))
             ->description($desc)
