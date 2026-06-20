@@ -207,8 +207,14 @@ class ProductResource extends Resource
                                 }
                                 return $data;
                             })
-                            ->mutateRelationshipDataBeforeCreateUsing(fn (array $data): array => self::consolidateMediaPath($data))
-                            ->mutateRelationshipDataBeforeSaveUsing(fn (array $data): array => self::consolidateMediaPath($data))
+                            ->mutateRelationshipDataBeforeCreateUsing(function (array $data): ?array {
+                                $consolidated = self::consolidateMediaPath($data);
+                                return empty($consolidated['path']) ? null : $consolidated;
+                            })
+                            ->mutateRelationshipDataBeforeSaveUsing(function (array $data): ?array {
+                                $consolidated = self::consolidateMediaPath($data);
+                                return empty($consolidated['path']) ? null : $consolidated;
+                            })
                             ->orderColumn('order')
                             ->columns(2)
                             ->defaultItems(0)
