@@ -140,7 +140,7 @@ export default function Produit({ product, related }: ProduitPageProps) {
                                 <img
                                     src={product.images[activeImage]}
                                     alt={product.name}
-                                    className="max-h-full max-w-full object-contain p-4"
+                                    className="h-full w-full object-contain p-4"
                                 />
                             ) : (
                                 <span className="material-symbols-outlined text-[96px] text-secondary/20" aria-hidden="true">
