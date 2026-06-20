@@ -11,6 +11,16 @@ class News extends Model {
     public function category(): BelongsTo { return $this->belongsTo(NewsCategory::class, "news_category_id"); }
     public function tags(): BelongsToMany { return $this->belongsToMany(NewsTag::class, "news_news_tag"); }
 
+    protected static function booted(): void
+    {
+        static::deleting(function (News $news) {
+            $p = $news->cover_image_path;
+            if ($p && ! str_starts_with($p, 'http') && ! str_starts_with($p, '/')) {
+                try { Storage::disk('s3')->delete($p); } catch (\Throwable) {}
+            }
+        });
+    }
+
     /** URL absolue de la couverture : URL externe, chemin public (/…) ou fichier sur le disque storage. */
     public function coverUrl(): ?string {
         $p = $this->cover_image_path;

@@ -8,6 +8,12 @@ class Media extends Model {
 
     protected static function booted(): void
     {
+        static::deleting(function (Media $media) {
+            if ($media->path && ! str_starts_with($media->path, 'http') && ! str_starts_with($media->path, '/')) {
+                try { Storage::disk('s3')->delete($media->path); } catch (\Throwable) {}
+            }
+        });
+
         // Renseigne automatiquement filename/size/mime à partir du fichier uploadé.
         static::saving(function (Media $media) {
             if (! $media->path) {

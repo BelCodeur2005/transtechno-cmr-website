@@ -11,6 +11,15 @@ class Product extends Model {
     protected $fillable = ["name","slug","reference","brand_id","category_id","short_description","long_description","price_fcfa","price_visible","status","is_featured","order","product_type","stock_status","stock_quantity"];
     protected $casts = ["price_visible" => "boolean","is_featured" => "boolean","price_fcfa" => "integer"];
 
+    protected static function booted(): void
+    {
+        // Supprime explicitement chaque ProductMedia afin que son hook deleting
+        // déclenche le nettoyage S3 (une FK CASCADE DB court-circuiterait l'event Eloquent).
+        static::deleting(function (Product $product) {
+            $product->media()->each(fn ($m) => $m->delete());
+        });
+    }
+
     /**
      * Colonnes interrogées par la recherche (Scout, driver database).
      * Matching par LIKE → correspondance partielle (ex. « micro » trouve « Microscope »),
