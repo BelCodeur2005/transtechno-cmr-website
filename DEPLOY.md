@@ -125,29 +125,85 @@ AWS_USE_PATH_STYLE_ENDPOINT=true    # obligatoire pour les S3 non-AWS
 
 ---
 
-## 6. Uploader les fichiers sur le serveur
+## 6. Structure de déploiement sur le serveur
 
-### Option A — SSH + Git (recommandée)
+### Architecture réelle utilisée (séparation sécurisée)
 
-```bash
-# Connexion SSH
-ssh u12345@transtechno.cm
+Laravel est déployé **en dehors de `public_html`** pour que les fichiers sensibles (`.env`, `app/`, `database/`, etc.) ne soient jamais accessibles depuis le web.
 
-# Créer le dossier de l'app (hors public_html)
-mkdir ~/app && cd ~/app
-
-# Cloner le dépôt (si vous utilisez Git)
-git clone https://github.com/votre-org/transtechno.git .
-
-# OU décompresser une archive uploadée via FTP
-# (uploader app.tar.gz dans ~/app puis tar -xzf app.tar.gz)
+```
+/home/username/
+├── laravel/              ← Tout le code Laravel (hors /public)
+│   ├── app/
+│   ├── bootstrap/
+│   ├── config/
+│   ├── database/
+│   ├── resources/
+│   ├── routes/
+│   ├── storage/
+│   ├── vendor/
+│   ├── .env
+│   └── artisan
+│
+└── public_html/          ← Document root du domaine (accessible depuis le web)
+    ├── index.php         ← Modifié pour pointer vers ~/laravel
+    ├── .htaccess         ← Règles Laravel + redirection HTTPS
+    ├── favicon.ico
+    ├── images/           ← Logo, images statiques
+    └── build/            ← Assets Vite compilés (npm run build)
 ```
 
-### Option B — SFTP (FileZilla)
+### Pourquoi cette structure ?
 
-1. Host : `transtechno.cm` | Protocol : SFTP | Port : `22`
-2. Créer le dossier `/home/u12345/app/` via le gestionnaire de fichiers cPanel
-3. Uploader **tout le contenu du projet** dans `/home/u12345/app/`
+Le dossier `public_html` est le seul accessible depuis Internet. En mettant Laravel dans `~/laravel/`, le `.env` (mots de passe, clés API) et tout le code source sont protégés — même si la configuration Apache faillit.
+
+### Le `public_html/index.php` modifié
+
+Le fichier `index.php` standard de Laravel pointe vers `vendor/` et `bootstrap/` relatifs. On le remplace par :
+
+```php
+<?php
+
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
+// Maintenance mode
+if (file_exists($maintenance = __DIR__.'/../laravel/storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+require __DIR__.'/../laravel/vendor/autoload.php';
+
+$app = require_once __DIR__.'/../laravel/bootstrap/app.php';
+
+$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
+
+$response = $kernel->handle(
+    $request = Request::capture()
+)->send();
+
+$kernel->terminate($request, $response);
+```
+
+### Uploader les fichiers
+
+**Via SFTP (FileZilla) :**
+1. Host : `transtechno.cm` | Protocole : SFTP | Port : `22`
+2. Uploader tout le projet **sauf** `public/` dans `~/laravel/`
+3. Uploader le contenu de `public/` dans `~/public_html/`
+4. Remplacer `~/public_html/index.php` par la version modifiée ci-dessus
+
+**Via SSH + Git :**
+```bash
+# Cloner dans ~/laravel
+cd ~ && git clone https://github.com/BelCodeur2005/transtechno-cmr-website.git laravel
+
+# Copier les fichiers public dans public_html
+cp -r ~/laravel/public/* ~/public_html/
+
+# Remplacer index.php par la version modifiée (voir ci-dessus)
+```
 
 ### Fichiers à **ne pas uploader**
 
@@ -162,7 +218,7 @@ git clone https://github.com/votre-org/transtechno.git .
 
 ## 7. Configurer le fichier `.env`
 
-Via SSH ou l'éditeur de fichiers cPanel, créer `/home/u12345/app/.env` :
+Via SSH ou l'éditeur de fichiers cPanel, créer `/home/u12345/laravel/.env` :
 
 ```dotenv
 APP_NAME="Transtechno Cameroun"
@@ -235,7 +291,7 @@ SEED_ADMIN_PASSWORD=MotDePasseAdmin2024!
 Toutes les commandes suivantes s'exécutent **via SSH** dans `/home/u12345/app/` :
 
 ```bash
-cd ~/app
+cd ~/laravel
 ```
 
 ### 8.1 Vérifier la version PHP
@@ -307,16 +363,11 @@ php artisan icons:cache
 
 ---
 
-## 9. Pointer le domaine vers `/public`
+## 9. Pointer le domaine vers `public_html`
 
-Le document root doit pointer vers `~/app/public`, **pas** vers `~/app/`.
+Avec la structure séparée (§6), `public_html` **est déjà** le document root par défaut sur PlanetHoster. Aucun changement nécessaire dans cPanel.
 
-### Via cPanel → Domaines → Document Root
-
-1. **cPanel → Domains** (ou Zone Editor selon la version)
-2. Trouver `transtechno.cm` → **Modifier le document root**
-3. Entrer le chemin absolu : `/home/u12345/app/public`
-4. Sauvegarder
+Le `public_html/index.php` modifié fait le lien vers `~/laravel/` — c'est lui qui joue le rôle du `public/index.php` de Laravel.
 
 ### Vérifier le `.htaccess`
 
@@ -344,7 +395,7 @@ RewriteRule ^ index.php [L]
 **cPanel → Cron Jobs** → Ajouter :
 
 ```
-* * * * *   /usr/local/bin/php /home/u12345/app/artisan queue:work --stop-when-empty --tries=3 --timeout=60 >> /dev/null 2>&1
+* * * * *   /usr/local/bin/php /home/u12345/laravel/artisan queue:work --stop-when-empty --tries=3 --timeout=60 >> /dev/null 2>&1
 ```
 
 > `--stop-when-empty` : le worker s'arrête quand la file est vide, ce qui est compatible avec le déclenchement par cron (pas de démon persistent).
@@ -352,7 +403,7 @@ RewriteRule ^ index.php [L]
 ### 10.2 Task Scheduler Laravel
 
 ```
-* * * * *   /usr/local/bin/php /home/u12345/app/artisan schedule:run >> /dev/null 2>&1
+* * * * *   /usr/local/bin/php /home/u12345/laravel/artisan schedule:run >> /dev/null 2>&1
 ```
 
 ### Vérifier le chemin PHP
@@ -464,7 +515,7 @@ npm run build
 
 # 2. Uploader les fichiers modifiés (SFTP ou git pull via SSH)
 # Via SSH :
-cd ~/app && git pull origin main
+cd ~/laravel && git pull origin main
 
 # 3. Installer les nouvelles dépendances PHP si nécessaire
 composer install --no-dev --optimize-autoloader
