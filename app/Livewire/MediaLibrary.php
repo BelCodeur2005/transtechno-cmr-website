@@ -137,10 +137,16 @@ class MediaLibrary extends Component
         // Sauve d'éventuelles modifs de métadonnées avant insertion.
         $this->saveDetails();
 
-        // Évènement navigateur global capté par le champ MediaPicker concerné.
+        // Évènement navigateur global capté par le champ MediaPicker concerné
+        // et par le RichEditor (fieldKey='richeditor'). On envoie "url" (URL S3
+        // complète) en plus de "path" pour que le RichEditor puisse afficher l'image.
         $this->js(
             "window.dispatchEvent(new CustomEvent('media-inserted', { detail: "
-            . json_encode(['fieldKey' => $this->fieldKey, 'path' => $media->path])
+            . json_encode([
+                'fieldKey' => $this->fieldKey,
+                'path'     => $media->path,
+                'url'      => $media->url(),
+            ])
             . ' }))'
         );
 

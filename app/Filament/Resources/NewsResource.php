@@ -61,8 +61,8 @@ class NewsResource extends Resource
 
                         Forms\Components\RichEditor::make('content')
                             ->label('Contenu')
-                            // L'icône d'upload direct est retirée : les images passent par la médiathèque (bouton ci-dessus).
                             ->disableToolbarButtons(['attachFiles'])
+                            ->extraInputAttributes(['style' => 'min-height: 500px'])
                             ->columnSpanFull(),
                     ]),
             ]),

@@ -301,7 +301,8 @@ php artisan icons:cache       # Filament — icônes
 ### 8.9 Optimiser Filament
 
 ```bash
-php artisan filament:optimize
+php artisan filament:cache-components
+php artisan icons:cache
 ```
 
 ---
@@ -474,10 +475,8 @@ php artisan migrate --force
 # 5. Vider et reconstruire les caches
 php artisan optimize:clear
 php artisan optimize
-
-# 6. (Si Filament a été mis à jour)
-php artisan filament:upgrade
-php artisan filament:optimize
+php artisan filament:cache-components
+php artisan icons:cache
 ```
 
 > Lors d'une mise à jour avec migration critique, activer brièvement le mode maintenance :
@@ -567,5 +566,5 @@ Vérifier `AWS_USE_PATH_STYLE_ENDPOINT=true` et l'endpoint exact dans le panneau
 | Redis | Instance dédiée incluse |
 | Storage | N0C Storage S3-compatible |
 | Domaine | transtechno.cm |
-| Email admin | transtechno.cm@gmail.com |
+| Email admin | office@transtechno-cmr.com |
 | Hotline SAV | +237 674 64 53 54 |

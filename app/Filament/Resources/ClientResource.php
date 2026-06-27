@@ -124,6 +124,7 @@ class ClientResource extends Resource
                 Tables\Filters\TernaryFilter::make('is_validated')->label('Validation'),
             ])
             ->actions([
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -137,6 +138,7 @@ class ClientResource extends Resource
     public static function getRelations(): array
     {
         return [
+            RelationManagers\QuotationsRelationManager::class,
             RelationManagers\EquipmentInventoryRelationManager::class,
         ];
     }
@@ -146,6 +148,7 @@ class ClientResource extends Resource
         return [
             'index' => Pages\ListClients::route('/'),
             'create' => Pages\CreateClient::route('/create'),
+            'view' => Pages\ViewClient::route('/{record}'),
             'edit' => Pages\EditClient::route('/{record}/edit'),
         ];
     }
