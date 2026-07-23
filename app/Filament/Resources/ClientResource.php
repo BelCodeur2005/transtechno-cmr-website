@@ -138,6 +138,7 @@ class ClientResource extends Resource
     public static function getRelations(): array
     {
         return [
+            RelationManagers\ContactsRelationManager::class,
             RelationManagers\QuotationsRelationManager::class,
             RelationManagers\EquipmentInventoryRelationManager::class,
         ];
