@@ -81,7 +81,7 @@ export default function Recapitulatif({ sectors }: Props) {
         <PublicLayout>
             <Head title="Récapitulatif de votre demande de cotation" />
 
-            <main className="mx-auto w-full max-w-7xl px-margin py-lg">
+            <main className="mx-auto w-full max-w-7xl px-sm sm:px-margin py-lg">
                 <Link
                     href="/catalogue"
                     className="mb-md inline-flex items-center gap-1 text-body-sm font-semibold text-tertiary hover:underline"
@@ -92,15 +92,15 @@ export default function Recapitulatif({ sectors }: Props) {
                     Continuer à explorer le catalogue
                 </Link>
 
-                <header className="mb-lg">
-                    <h1 className="text-headline-xl text-navy-blue">Récapitulatif de votre demande de cotation</h1>
+                <header className="mb-md lg:mb-lg">
+                    <h1 className="text-2xl font-bold text-navy-blue sm:text-4xl lg:text-headline-xl">Récapitulatif de votre demande de cotation</h1>
                     <p className="mt-xs text-body-lg text-secondary/70">
                         {totalArticles} article{totalArticles > 1 ? 's' : ''} sélectionné{totalArticles > 1 ? 's' : ''}
                     </p>
                 </header>
 
                 {isEmpty ? (
-                    <div className="rounded-xl border border-outline-variant bg-white p-xl text-center">
+                    <div className="rounded-xl border border-outline-variant bg-white p-md lg:p-xl text-center">
                         <span className="material-symbols-outlined text-[56px] text-secondary/25" aria-hidden="true">
                             request_quote
                         </span>
@@ -125,7 +125,7 @@ export default function Recapitulatif({ sectors }: Props) {
                         </div>
                     </div>
                 ) : (
-                    <form onSubmit={submit} className="grid grid-cols-1 gap-lg lg:grid-cols-12">
+                    <form onSubmit={submit} className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-12">
                         {/* ── Colonne gauche : produits ───────────────── */}
                         <div className="flex flex-col gap-md lg:col-span-8">
                             <section className="rounded-xl border border-outline-variant bg-white">

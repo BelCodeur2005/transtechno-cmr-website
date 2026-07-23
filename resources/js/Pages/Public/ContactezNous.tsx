@@ -76,18 +76,18 @@ export default function ContactezNous() {
             </Head>
 
             {/* ── Hero ──────────────────────────────────────────── */}
-            <section className="relative flex min-h-[440px] items-center overflow-hidden py-xl lg:min-h-[500px]">
+            <section className="relative flex min-h-[340px] items-center overflow-hidden py-lg lg:min-h-[500px] lg:py-xl">
                 <div className="absolute inset-0 z-0">
                     <img src="/images/contact-hero.jpg" alt="" className="h-full w-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-r from-dark-navy/95 via-dark-navy/80 to-dark-navy/50" />
                 </div>
-                <div className="relative z-10 mx-auto w-full max-w-7xl px-margin">
+                <div className="relative z-10 mx-auto w-full max-w-7xl px-sm sm:px-margin">
                     <div className="max-w-3xl">
-                        <h1 className="mb-sm text-headline-xl text-white">L'expertise biomédicale à votre porte</h1>
-                        <p className="text-body-lg text-white/90">
+                        <h1 className="mb-sm text-2xl font-bold text-white sm:text-4xl lg:text-headline-xl">L'expertise biomédicale à votre porte</h1>
+                        <p className="text-body-md text-white/90 lg:text-body-lg">
                             Contactez le partenaire certifié OMS et Minsanté au Cameroun.
                         </p>
-                        <div className="mt-lg">
+                        <div className="mt-md lg:mt-lg">
                             <a
                                 href="#contact-form"
                                 className="inline-flex h-12 items-center rounded-lg bg-primary-container px-lg font-bold text-white transition hover:brightness-110"
@@ -100,8 +100,8 @@ export default function ContactezNous() {
             </section>
 
             {/* ── Cartes d'information ───────────────────────────── */}
-            <section className="mx-auto max-w-7xl px-margin py-lg">
-                <div className="grid grid-cols-1 gap-gutter md:grid-cols-4">
+            <section className="mx-auto max-w-7xl px-sm sm:px-margin py-lg">
+                <div className="grid grid-cols-1 gap-md md:grid-cols-4">
                     {/* Téléphone */}
                     <div className="flex flex-col items-center border-t-4 border-primary-container bg-white p-md text-center shadow-lg transition-transform hover:-translate-y-1">
                         <span className="material-symbols-outlined mb-sm text-4xl text-primary-container" aria-hidden="true">
@@ -158,17 +158,17 @@ export default function ContactezNous() {
             </section>
 
             {/* ── Notre Expertise SAV ───────────────────────────── */}
-            <section className="bg-surface-2 py-xl">
-                <div className="mx-auto max-w-7xl px-margin">
-                    <div className="mb-lg text-center">
+            <section className="bg-surface-2 py-lg lg:py-xl">
+                <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                    <div className="mb-md lg:mb-lg text-center">
                         <h2 className="mb-xs text-headline-lg text-secondary">Notre Expertise SAV</h2>
                         <div className="mx-auto h-1 w-24 bg-primary" />
                     </div>
-                    <div className="grid grid-cols-1 gap-lg md:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-md sm:grid-cols-3">
                         {SAV_PILLARS.map((p) => (
                             <div
                                 key={p.title}
-                                className="border border-outline-variant bg-white p-lg text-center shadow-sm transition-shadow hover:shadow-md"
+                                className="border border-outline-variant bg-white p-md lg:p-lg text-center shadow-sm transition-shadow hover:shadow-md"
                             >
                                 <div className="mx-auto mb-md flex h-16 w-16 items-center justify-center rounded-full bg-primary-container/5">
                                     <span className="material-symbols-outlined text-3xl text-primary" aria-hidden="true">
@@ -184,21 +184,21 @@ export default function ContactezNous() {
             </section>
 
             {/* ── Formulaire ────────────────────────────────────── */}
-            <section id="contact-form" className="scroll-mt-[180px] bg-surface py-xl">
-                <div className="mx-auto max-w-6xl px-margin">
+            <section id="contact-form" className="scroll-mt-[180px] bg-surface py-lg lg:py-xl">
+                <div className="mx-auto max-w-6xl px-sm sm:px-margin">
                     <div className="grid overflow-hidden rounded-xl border border-outline-variant bg-white shadow-2xl lg:grid-cols-5">
                         {/* Panneau gauche — réassurance */}
-                        <aside className="relative overflow-hidden bg-dark-navy p-lg text-white lg:col-span-2 lg:p-xl">
+                        <aside className="relative overflow-hidden bg-dark-navy p-sm sm:p-md text-white lg:col-span-2 lg:p-xl">
                             <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary-container/20 blur-2xl" aria-hidden="true" />
                             <span className="text-label-caps font-semibold uppercase tracking-widest text-[#ffb4ab]">
                                 Contact direct
                             </span>
-                            <h2 className="mt-xs text-headline-lg">Parlons de votre projet</h2>
+                            <h2 className="mt-xs text-headline-md lg:text-headline-lg">Parlons de votre projet</h2>
                             <p className="mt-sm text-body-md text-white/80">
                                 Une question technique, un besoin d'équipement ou une demande de cotation ? Notre équipe
                                 vous répond sous 24h ouvrées.
                             </p>
-                            <ul className="mt-lg space-y-md">
+                            <ul className="mt-md lg:mt-lg space-y-sm lg:space-y-md">
                                 {[
                                     { icon: 'bolt', t: 'Réponse rapide', d: 'Prise en charge sous 24h ouvrées.' },
                                     { icon: 'request_quote', t: 'Devis gratuit', d: 'Cotation détaillée sans engagement.' },
@@ -218,7 +218,7 @@ export default function ContactezNous() {
                                     </li>
                                 ))}
                             </ul>
-                            <div className="mt-lg border-t border-white/10 pt-md">
+                            <div className="mt-md lg:mt-lg border-t border-white/10 pt-md">
                                 <p className="text-label-caps uppercase tracking-wider text-white/50">Hotline SAV</p>
                                 <a
                                     href="tel:+237674645354"
@@ -231,7 +231,7 @@ export default function ContactezNous() {
                         </aside>
 
                         {/* Colonne droite — formulaire */}
-                        <div className="p-md lg:col-span-3 lg:p-xl">
+                        <div className="p-sm sm:p-md lg:col-span-3 lg:p-xl">
                             <h3 className="mb-md text-headline-md text-secondary">Formulaire de Contact Professionnel</h3>
 
                         {showSuccess && (
@@ -409,8 +409,8 @@ export default function ContactezNous() {
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen
                 />
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                    <div className="pointer-events-auto flex items-center gap-md border-2 border-primary bg-white p-md shadow-2xl">
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-sm">
+                    <div className="pointer-events-auto flex items-center gap-sm sm:gap-md border-2 border-primary bg-white p-sm sm:p-md shadow-2xl">
                         <div className="rounded bg-primary p-2 text-white">
                             <span className="material-symbols-outlined text-3xl" aria-hidden="true">
                                 medical_services

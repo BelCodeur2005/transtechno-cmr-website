@@ -28,7 +28,7 @@ export default function Categories({ categories }: CategoriesPageProps) {
             <div className="mx-auto max-w-7xl px-4 py-lg md:px-margin">
                 {/* En-tête de page */}
                 <header className="mb-md">
-                    <h1 className="text-headline-lg text-navy-blue">Nos Catégories de Produits</h1>
+                    <h1 className="text-headline-md lg:text-headline-lg text-navy-blue">Nos Catégories de Produits</h1>
                     <div className="mt-2 h-1 w-16 rounded bg-primary-container" />
                     <p className="mt-sm max-w-2xl text-body-md text-secondary">
                         Explorez notre gamme complète d'équipements médicaux, physiques et géophysiques certifiés OMS,

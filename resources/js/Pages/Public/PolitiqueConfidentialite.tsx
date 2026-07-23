@@ -94,16 +94,16 @@ export default function PolitiqueConfidentialite() {
         <PublicLayout>
             <Head title="Politique de Confidentialité" />
 
-            <main className="mx-auto max-w-4xl px-margin pb-xl">
+            <main className="mx-auto max-w-4xl px-sm sm:px-margin pb-lg lg:pb-xl">
                 <section className="mb-lg border-b border-outline-variant py-lg">
-                    <h1 className="mb-xs text-headline-xl text-navy-blue">Politique de Confidentialité</h1>
-                    <p className="max-w-2xl text-body-lg text-secondary/70">
+                    <h1 className="mb-xs text-2xl font-bold text-navy-blue sm:text-4xl lg:text-headline-xl">Politique de Confidentialité</h1>
+                    <p className="max-w-2xl text-body-md text-secondary/70 lg:text-body-lg">
                         La protection de vos données et le respect de votre vie privée sont au cœur de nos engagements
                         envers nos partenaires de santé.
                     </p>
                 </section>
 
-                <div className="space-y-xl">
+                <div className="space-y-lg lg:space-y-xl">
                     {SECTIONS.map((s) => (
                         <article key={s.title} className="space-y-sm">
                             <h2 className="flex items-center gap-xs text-headline-md text-secondary">

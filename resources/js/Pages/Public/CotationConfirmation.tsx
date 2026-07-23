@@ -12,22 +12,22 @@ export default function CotationConfirmation({ reference, isUrgent }: Props) {
         <PublicLayout>
             <Head title="Demande envoyée" />
 
-            <main className="mx-auto flex w-full max-w-2xl flex-col items-center px-margin py-xl text-center">
+            <main className="mx-auto flex w-full max-w-2xl flex-col items-center px-sm sm:px-margin py-lg lg:py-xl text-center">
                 <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
                     <span className="material-symbols-outlined text-[44px] text-green-600" aria-hidden="true">
                         task_alt
                     </span>
                 </div>
 
-                <h1 className="mt-md text-headline-xl text-navy-blue">Demande bien reçue !</h1>
-                <p className="mt-sm max-w-lg text-body-lg text-secondary/70">
+                <h1 className="mt-md text-2xl font-bold text-navy-blue sm:text-4xl lg:text-headline-xl">Demande bien reçue !</h1>
+                <p className="mt-sm max-w-lg text-body-md text-secondary/70 lg:text-body-lg">
                     Merci. Votre demande de cotation a été transmise à notre équipe commerciale. Vous recevrez une offre
                     technico-commerciale détaillée sous 24h à 48h.
                 </p>
 
-                <div className="mt-md rounded-xl border border-outline-variant bg-white px-lg py-md">
+                <div className="mt-md rounded-xl border border-outline-variant bg-white px-md sm:px-lg py-md">
                     <p className="text-label-caps uppercase text-secondary/60">Votre référence de suivi</p>
-                    <p className="mt-1 text-headline-lg font-bold tracking-wide text-primary">#{reference}</p>
+                    <p className="mt-1 text-headline-md lg:text-headline-lg font-bold tracking-wide text-primary">#{reference}</p>
                 </div>
 
                 {isUrgent && (
@@ -37,7 +37,7 @@ export default function CotationConfirmation({ reference, isUrgent }: Props) {
                     </div>
                 )}
 
-                <div className="mt-lg flex w-full flex-col items-center gap-sm">
+                <div className="mt-md lg:mt-lg flex w-full flex-col items-center gap-sm">
                     <WhatsAppButton
                         message={`Bonjour Transtechno, je souhaite suivre ma demande de cotation #${reference}.`}
                         label={`Suivre ma demande sur WhatsApp`}
@@ -58,7 +58,7 @@ export default function CotationConfirmation({ reference, isUrgent }: Props) {
                     </div>
                 </div>
 
-                <p className="mt-lg flex items-center gap-2 text-body-sm text-secondary/60">
+                <p className="mt-md lg:mt-lg flex items-center gap-2 text-body-sm text-secondary/60">
                     <span className="material-symbols-outlined text-[18px] text-tertiary" aria-hidden="true">support_agent</span>
                     Une question ? Appelez le <a href="tel:+237674645354" className="font-semibold text-primary hover:underline">+237 674 64 53 54</a>
                 </p>

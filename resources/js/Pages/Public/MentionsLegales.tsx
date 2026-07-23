@@ -8,28 +8,28 @@ export default function MentionsLegales() {
         <PublicLayout>
             <Head title="Mentions Légales" />
 
-            <main className="mx-auto max-w-5xl px-margin pb-xl">
+            <main className="mx-auto max-w-5xl px-sm sm:px-margin pb-lg lg:pb-xl">
                 {/* ── Hero ──────────────────────────────────────── */}
                 <section className="mb-lg border-b border-outline-variant py-lg">
-                    <h1 className="mb-xs text-headline-xl text-navy-blue">Mentions Légales</h1>
-                    <p className="max-w-2xl text-body-lg text-secondary/70">
+                    <h1 className="mb-xs text-2xl font-bold text-navy-blue sm:text-4xl lg:text-headline-xl">Mentions Légales</h1>
+                    <p className="max-w-2xl text-body-md text-secondary/70 lg:text-body-lg">
                         Cadre réglementaire et informations institutionnelles relatives à l'exploitation de la plateforme
                         numérique de Transtechno Cameroun.
                     </p>
                 </section>
 
-                <div className="grid grid-cols-1 gap-lg md:grid-cols-12">
+                <div className="grid grid-cols-1 gap-md lg:gap-lg md:grid-cols-12">
                     {/* ── Colonne principale ───────────────────────── */}
-                    <div className="space-y-xl md:col-span-8">
+                    <div className="space-y-lg lg:space-y-xl md:col-span-8">
                         {/* Informations Entreprise */}
                         <article className="space-y-sm">
-                            <h2 className="flex items-center gap-xs text-headline-lg text-secondary">
+                            <h2 className="flex items-center gap-xs text-headline-md lg:text-headline-lg text-secondary">
                                 <span className="material-symbols-outlined text-tertiary" aria-hidden="true">
                                     corporate_fare
                                 </span>
                                 Informations Entreprise
                             </h2>
-                            <div className="rounded-lg border border-outline-variant bg-white p-lg">
+                            <div className="rounded-lg border border-outline-variant bg-white p-md lg:p-lg">
                                 <p className="text-body-md leading-relaxed text-secondary/80">
                                     <strong className="text-secondary">TRANSTECHNO CAMEROUN</strong>
                                     <br />
@@ -65,13 +65,13 @@ export default function MentionsLegales() {
 
                         {/* Agrément et Conformité */}
                         <article className="space-y-sm">
-                            <h2 className="flex items-center gap-xs text-headline-lg text-secondary">
+                            <h2 className="flex items-center gap-xs text-headline-md lg:text-headline-lg text-secondary">
                                 <span className="material-symbols-outlined text-tertiary" aria-hidden="true">
                                     verified_user
                                 </span>
                                 Agrément et Conformité
                             </h2>
-                            <div className="rounded-lg border border-primary/20 bg-primary/5 p-lg text-secondary/80">
+                            <div className="rounded-lg border border-primary/20 bg-primary/5 p-md lg:p-lg text-secondary/80">
                                 <p className="text-body-md">
                                     Transtechno Cameroun est une institution{' '}
                                     <strong className="text-brand-red">
@@ -89,7 +89,7 @@ export default function MentionsLegales() {
 
                         {/* Propriété Intellectuelle */}
                         <article className="space-y-sm">
-                            <h2 className="flex items-center gap-xs text-headline-lg text-secondary">
+                            <h2 className="flex items-center gap-xs text-headline-md lg:text-headline-lg text-secondary">
                                 <span className="material-symbols-outlined text-tertiary" aria-hidden="true">
                                     copyright
                                 </span>
@@ -111,7 +111,7 @@ export default function MentionsLegales() {
 
                         {/* Protection des Données */}
                         <article className="space-y-sm">
-                            <h2 className="flex items-center gap-xs text-headline-lg text-secondary">
+                            <h2 className="flex items-center gap-xs text-headline-md lg:text-headline-lg text-secondary">
                                 <span className="material-symbols-outlined text-tertiary" aria-hidden="true">
                                     security
                                 </span>
@@ -130,7 +130,7 @@ export default function MentionsLegales() {
 
                         {/* Responsabilité Technique */}
                         <article className="space-y-sm">
-                            <h2 className="flex items-center gap-xs text-headline-lg text-secondary">
+                            <h2 className="flex items-center gap-xs text-headline-md lg:text-headline-lg text-secondary">
                                 <span className="material-symbols-outlined text-tertiary" aria-hidden="true">
                                     gavel
                                 </span>

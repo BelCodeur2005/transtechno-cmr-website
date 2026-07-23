@@ -18,6 +18,12 @@ class Product extends Model {
         static::deleting(function (Product $product) {
             $product->media()->each(fn ($m) => $m->delete());
         });
+
+        static::updated(function (Product $product) {
+            if ($product->wasChanged('product_type') && $product->product_type !== 'reactif') {
+                $product->reagentDetail?->delete();
+            }
+        });
     }
 
     /**

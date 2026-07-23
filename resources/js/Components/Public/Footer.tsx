@@ -117,7 +117,7 @@ export default function Footer() {
                                     <a href={`tel:${company.phone_1.replace(/\s/g, '')}`} className="hover:text-white">{company.phone_1}</a>
                                     <br />
                                     <a href={`https://wa.me/${company.whatsapp}`} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                                        {company.phone_2} <span style={{fontSize:'10px',opacity:.7}}>(WhatsApp)</span>
+                                        {company.phone_2} <span className="text-[10px] opacity-70">(WhatsApp)</span>
                                     </a>
                                 </span>
                             </li>
@@ -167,7 +167,7 @@ export default function Footer() {
             <div className="border-t border-white/10">
                 <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4 text-label-caps uppercase text-white/50 sm:flex-row sm:items-center sm:justify-between md:px-margin">
                     <p>© {year} Transtechno Cameroun. Tous droits réservés.</p>
-                    <div className="flex flex-wrap gap-md">
+                    <div className="flex flex-wrap gap-sm sm:gap-md">
                         <Link href="/politique-confidentialite" className="hover:text-white">
                             Confidentialité
                         </Link>

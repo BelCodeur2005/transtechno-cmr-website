@@ -125,7 +125,7 @@ export default function Header({ quoteCount }: HeaderProps) {
                         <span className="hidden sm:inline">Agréé Minsanté : arrêté N° 0683</span>
                         <span className="sm:hidden">Agréé Minsanté</span>
                     </p>
-                    <div className="flex items-center gap-sm">
+                    <div className="flex items-center gap-xs sm:gap-sm">
                         <Link href="/contact" className="hidden items-center gap-1 hover:text-white/80 md:flex">
                             <span className="material-symbols-outlined text-[18px]" aria-hidden="true">
                                 help
@@ -274,7 +274,7 @@ export default function Header({ quoteCount }: HeaderProps) {
 
                                 {/* ── Méga-menu PRODUITS (liste plate sur 4 colonnes, type maquette) ── */}
                                 {item.megaType === 'produits' && openMenu === item.label && (
-                                    <div className="absolute left-0 top-full z-50 w-[1000px] rounded-b-lg border border-outline-variant bg-white p-lg shadow-2xl">
+                                    <div className="absolute left-0 top-full z-50 w-[1000px] max-w-[calc(100vw-4rem)] rounded-b-lg border border-outline-variant bg-white p-lg shadow-2xl">
                                         {productColumns.length === 0 ? (
                                             <p className="text-body-sm text-secondary/60">Aucune catégorie disponible.</p>
                                         ) : (
@@ -305,7 +305,7 @@ export default function Header({ quoteCount }: HeaderProps) {
 
                                 {/* ── Méga-menu RÉACTIFS (catégories + carte partenaire) ── */}
                                 {item.megaType === 'reactifs' && openMenu === item.label && (
-                                    <div className="absolute left-0 top-full z-50 w-[820px] rounded-b-lg border border-outline-variant bg-white p-md shadow-2xl">
+                                    <div className="absolute left-0 top-full z-50 w-[820px] max-w-[calc(100vw-4rem)] rounded-b-lg border border-outline-variant bg-white p-md shadow-2xl">
                                         <div className="grid grid-cols-[1.4fr_1fr] gap-md">
                                             <div>
                                                 <h3 className="mb-2 border-b border-outline-variant pb-1.5 text-label-caps uppercase text-navy-blue">
@@ -365,6 +365,22 @@ export default function Header({ quoteCount }: HeaderProps) {
             {mobileOpen && (
                 <nav aria-label="Navigation mobile" className="border-b border-outline-variant bg-white md:hidden">
                     <ul className="mx-auto max-w-7xl px-4 py-2">
+                        {/* Recherche mobile */}
+                        <li className="border-b border-outline-variant pb-2 pt-1">
+                            <form onSubmit={(e) => { submitSearch(e); setMobileOpen(false); }} role="search" className="relative">
+                                <span className="material-symbols-outlined pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-secondary" aria-hidden="true">search</span>
+                                <input
+                                    type="search"
+                                    name="q"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    placeholder="Rechercher un équipement…"
+                                    aria-label="Rechercher un produit"
+                                    autoComplete="off"
+                                    className="w-full rounded-lg border border-outline-variant bg-surface-2 py-3 pl-11 pr-4 text-body-md text-secondary placeholder:text-secondary/60 focus:border-tertiary focus:ring-1 focus:ring-tertiary"
+                                />
+                            </form>
+                        </li>
                         {navItems.map((item) => (
                             <li key={item.label}>
                                 <Link

@@ -95,7 +95,7 @@ class ServicesController extends Controller
                 'description' => $c->description,
             ]);
 
-        return Inertia::render('Public/AbmReactifs', [
+        return Inertia::render('Public/Reactifs', [
             'requestTypes' => self::ABM_REQUEST_TYPES,
             'domains' => $domains,
         ]);
@@ -111,7 +111,7 @@ class ServicesController extends Controller
             'structure' => ['required', 'string', 'max:255'],
             'function' => ['nullable', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:50'],
-            'email' => ['nullable', 'email', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
             'request_type' => ['required', 'string', 'in:' . implode(',', self::ABM_REQUEST_TYPES)],
             'message' => ['nullable', 'string', 'max:5000'],
         ]);
@@ -150,7 +150,7 @@ class ServicesController extends Controller
             'structure'               => ['required', 'string', 'max:255'],
             'city'                    => ['nullable', 'string', 'max:255'],
             'phone'                   => ['required', 'string', 'max:50'],
-            'email'                   => ['nullable', 'email', 'max:255'],
+            'email'                   => ['required', 'email', 'max:255'],
             'intervention_type'       => ['required', 'string', 'in:' . implode(',', self::INTERVENTION_TYPES)],
             'equipments'              => ['nullable', 'array', 'max:10'],
             'equipments.*.brand'      => ['nullable', 'string', 'max:255'],
@@ -248,7 +248,7 @@ class ServicesController extends Controller
             'structure' => ['required', 'string', 'max:255'],
             'function' => ['nullable', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:50'],
-            'email' => ['nullable', 'email', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
             'project_type' => ['required', 'string', 'in:' . implode(',', self::PROJECT_TYPES)],
             'message' => ['nullable', 'string', 'max:5000'],
         ]);

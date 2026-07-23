@@ -34,8 +34,8 @@ const STEPS = [
 
 function SectionHeading({ children }: { children: ReactNode }) {
     return (
-        <div className="mb-lg text-center">
-            <h2 className="text-headline-lg text-navy-blue">{children}</h2>
+        <div className="mb-md lg:mb-lg text-center">
+            <h2 className="text-headline-md lg:text-headline-lg text-navy-blue">{children}</h2>
             <span className="mx-auto mt-2 block h-1 w-16 rounded-full bg-primary-container" aria-hidden="true" />
         </div>
     );
@@ -54,18 +54,18 @@ export default function ServicesSav() {
             </Head>
 
             {/* ── Hero ─────────────────────────────────────────── */}
-            <section className="relative flex min-h-[460px] items-center overflow-hidden py-xl">
+            <section className="relative flex min-h-[320px] items-center overflow-hidden py-lg lg:min-h-[460px] lg:py-xl">
                 <div className="absolute inset-0 z-0">
-                    <img src="/images/services-hero.jpg" alt="" className="h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-navy-blue via-navy-blue/90 to-navy-blue/60" />
+                    <img src="/images/services-hero.jpg" alt="" className="h-full w-full object-cover object-left" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-navy-blue via-navy-blue/90 to-navy-blue/75" />
                 </div>
-                <div className="relative z-10 mx-auto w-full max-w-7xl px-margin">
+                <div className="relative z-10 mx-auto w-full max-w-7xl px-sm sm:px-margin">
                     <span className="mb-sm inline-flex items-center gap-2 rounded-full bg-primary-container/20 px-3 py-1 text-label-caps font-semibold uppercase text-white ring-1 ring-white/20">
                         <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" aria-hidden="true" />
                         Support technique 24/7
                     </span>
-                    <h1 className="max-w-3xl text-headline-xl text-white">Expertise Technique &amp; Service Après-Vente</h1>
-                    <p className="mt-sm max-w-2xl text-body-lg text-white/80">
+                    <h1 className="max-w-3xl text-2xl font-bold text-white sm:text-4xl lg:text-headline-xl">Expertise Technique &amp; Service Après-Vente</h1>
+                    <p className="mt-sm max-w-2xl text-body-md text-white/80 lg:text-body-lg">
                         Parce qu'une panne peut paralyser un bloc opératoire ou un laboratoire, notre équipe d'ingénieurs
                         certifiés intervient sur toute l'étendue du territoire camerounais.
                     </p>
@@ -86,7 +86,7 @@ export default function ServicesSav() {
             </section>
 
             {/* ── 4 piliers ────────────────────────────────────── */}
-            <section className="mx-auto max-w-7xl px-margin py-xl">
+            <section className="mx-auto max-w-7xl px-sm sm:px-margin py-lg lg:py-xl">
                 <SectionHeading>Un accompagnement sur mesure</SectionHeading>
                 <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
                     {PILLARS.map((p) => (
@@ -102,7 +102,7 @@ export default function ServicesSav() {
             </section>
 
             {/* ── Pôle Hémodialyse (bandeau navy) ──────────────── */}
-            <section className="mx-auto max-w-7xl px-margin pb-xl">
+            <section className="mx-auto max-w-7xl px-sm sm:px-margin pb-lg lg:pb-xl">
                 <div className="flex flex-col items-start gap-md rounded-2xl bg-navy-blue p-lg text-white lg:flex-row lg:items-center lg:justify-between lg:p-xl">
                     <div className="max-w-3xl">
                         <p className="flex items-center gap-2 text-label-caps font-semibold uppercase text-tertiary-fixed-dim">
@@ -124,10 +124,10 @@ export default function ServicesSav() {
             </section>
 
             {/* ── Processus (timeline) ─────────────────────────── */}
-            <section className="bg-surface py-xl">
-                <div className="mx-auto max-w-7xl px-margin">
+            <section className="bg-surface py-lg lg:py-xl">
+                <div className="mx-auto max-w-7xl px-sm sm:px-margin">
                     <SectionHeading>Comment déclencher une intervention ?</SectionHeading>
-                    <ol className="relative grid grid-cols-1 gap-lg sm:grid-cols-2 lg:grid-cols-4">
+                    <ol className="relative grid grid-cols-1 gap-md sm:grid-cols-2 sm:gap-lg lg:grid-cols-4">
                         <span className="absolute left-0 right-0 top-8 hidden h-0.5 bg-outline-variant lg:block" aria-hidden="true" />
                         {STEPS.map((s, i) => (
                             <li key={s.title} className="relative flex flex-col items-center text-center">
@@ -143,8 +143,8 @@ export default function ServicesSav() {
             </section>
 
             {/* ── CTA urgence (2 boutons) ──────────────────────── */}
-            <section className="bg-navy-blue py-xl">
-                <div className="mx-auto max-w-3xl px-margin text-center">
+            <section className="bg-navy-blue py-lg lg:py-xl">
+                <div className="mx-auto max-w-3xl px-sm sm:px-margin text-center">
                     <h2 className="text-headline-lg text-white">Votre équipement nécessite une attention urgente ?</h2>
                     <p className="mt-sm text-body-md text-white/70">
                         Nos techniciens sont formés directement chez nos partenaires internationaux.

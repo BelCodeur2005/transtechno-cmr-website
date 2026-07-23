@@ -73,14 +73,14 @@ export default function Article({ article, related }: Props) {
             </Head>
 
             {/* ── En-tête ──────────────────────────────────────── */}
-            <header className="relative overflow-hidden bg-navy-blue py-xl text-white">
+            <header className="relative overflow-hidden bg-navy-blue py-lg lg:py-xl text-white">
                 {article.image && (
                     <>
                         <img src={article.image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25" />
                         <div className="absolute inset-0 bg-navy-blue/70" />
                     </>
                 )}
-                <div className="relative mx-auto max-w-4xl px-margin">
+                <div className="relative mx-auto max-w-4xl px-sm sm:px-margin">
                     <Link href="/actualites" className="mb-sm inline-flex items-center gap-1 text-body-sm font-semibold text-white/80 hover:text-white">
                         <span className="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_back</span>
                         Toutes les actualités
@@ -90,8 +90,8 @@ export default function Article({ article, related }: Props) {
                             {article.category.name}
                         </span>
                     )}
-                    <h1 className="text-headline-xl">{article.title}</h1>
-                    <div className="mt-sm flex flex-wrap items-center gap-md text-body-sm text-white/80">
+                    <h1 className="text-2xl font-bold sm:text-4xl lg:text-headline-xl">{article.title}</h1>
+                    <div className="mt-sm flex flex-wrap items-center gap-sm sm:gap-md text-body-sm text-white/80">
                         {article.published_at && (
                             <span className="inline-flex items-center gap-1">
                                 <span className="material-symbols-outlined text-[18px]" aria-hidden="true">calendar_today</span>
@@ -108,17 +108,17 @@ export default function Article({ article, related }: Props) {
                 </div>
             </header>
 
-            <main className="mx-auto max-w-4xl px-margin py-lg">
+            <main className="mx-auto max-w-4xl px-sm sm:px-margin py-lg">
                 {article.image && (
                     <img
                         src={article.image}
                         alt={article.title}
-                        className="mb-lg h-auto w-full rounded-xl border border-outline-variant object-cover"
+                        className="mb-md lg:mb-lg h-auto w-full rounded-xl border border-outline-variant object-cover"
                     />
                 )}
 
                 {article.excerpt && (
-                    <p className="mb-lg border-l-4 border-primary pl-md text-body-lg font-medium text-secondary">
+                    <p className="mb-md lg:mb-lg border-l-4 border-primary pl-sm sm:pl-md text-body-md lg:text-body-lg font-medium text-secondary">
                         {article.excerpt}
                     </p>
                 )}
@@ -130,7 +130,7 @@ export default function Article({ article, related }: Props) {
                 />
 
                 {article.tags.length > 0 && (
-                    <div className="mt-lg flex flex-wrap items-center gap-2 border-t border-outline-variant pt-md">
+                    <div className="mt-md lg:mt-lg flex flex-wrap items-center gap-2 border-t border-outline-variant pt-md">
                         <span className="text-body-sm font-semibold text-secondary/60">Mots-clés :</span>
                         {article.tags.map((t) => (
                             <span key={t.slug} className="rounded-full bg-surface-2 px-3 py-1 text-body-sm text-secondary">
@@ -141,7 +141,7 @@ export default function Article({ article, related }: Props) {
                 )}
 
                 {/* CTA cotation */}
-                <div className="mt-lg flex flex-col items-start gap-sm rounded-xl border border-outline-variant bg-surface p-lg sm:flex-row sm:items-center sm:justify-between">
+                <div className="mt-md lg:mt-lg flex flex-col items-start gap-sm rounded-xl border border-outline-variant bg-surface p-md lg:p-lg sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <h3 className="text-headline-md text-navy-blue">Un projet d'équipement ?</h3>
                         <p className="text-body-md text-secondary/70">Nos experts vous accompagnent de la sélection à l'installation.</p>
@@ -155,9 +155,9 @@ export default function Article({ article, related }: Props) {
             {/* ── Articles liés ────────────────────────────────── */}
             {related.length > 0 && (
                 <section className="border-t border-outline-variant bg-surface py-lg">
-                    <div className="mx-auto max-w-7xl px-margin">
-                        <h2 className="mb-md text-headline-lg text-navy-blue">À lire également</h2>
-                        <div className="grid grid-cols-1 gap-md sm:grid-cols-3">
+                    <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                        <h2 className="mb-md text-headline-md lg:text-headline-lg text-navy-blue">À lire également</h2>
+                        <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
                             {related.map((a) => (
                                 <Link
                                     key={a.slug}

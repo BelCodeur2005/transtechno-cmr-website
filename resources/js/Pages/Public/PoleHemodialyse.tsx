@@ -77,17 +77,17 @@ export default function PoleHemodialyse({ projectTypes }: Props) {
             </Head>
 
             {/* ── Hero ─────────────────────────────────────────── */}
-            <section className="relative flex min-h-[480px] items-center overflow-hidden py-xl">
+            <section className="relative flex min-h-[360px] items-center overflow-hidden py-lg lg:min-h-[480px] lg:py-xl">
                 <div className="absolute inset-0 z-0">
                     <img src="/images/hemo-hero.jpg" alt="" className="h-full w-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-r from-navy-blue via-navy-blue/90 to-tertiary/40" />
                 </div>
-                <div className="relative z-10 mx-auto w-full max-w-7xl px-margin">
+                <div className="relative z-10 mx-auto w-full max-w-7xl px-sm sm:px-margin">
                     <p className="text-label-caps font-semibold uppercase text-tertiary-fixed-dim">Pôle d'Excellence</p>
-                    <h1 className="mt-1 max-w-3xl text-headline-xl text-white">
+                    <h1 className="mt-1 max-w-3xl text-2xl font-bold text-white sm:text-4xl lg:text-headline-xl">
                         Solutions intégrales pour l'Hémodialyse et le Traitement des Eaux
                     </h1>
-                    <p className="mt-sm max-w-2xl text-body-lg text-white/80">
+                    <p className="mt-sm max-w-2xl text-body-md text-white/80 lg:text-body-lg">
                         Accompagnement de bout en bout pour la création et la maintenance de centres de dialyse au Cameroun :
                         de l'installation des générateurs à la production locale de dialysats certifiés.
                     </p>
@@ -99,13 +99,13 @@ export default function PoleHemodialyse({ projectTypes }: Props) {
             </section>
 
             {/* ── 3 expertises ─────────────────────────────────── */}
-            <section className="mx-auto max-w-7xl px-margin py-xl">
-                <div className="mb-lg text-center">
-                    <h2 className="text-headline-lg text-navy-blue">Une maîtrise complète de la chaîne de dialyse</h2>
+            <section className="mx-auto max-w-7xl px-sm sm:px-margin py-lg lg:py-xl">
+                <div className="mb-md lg:mb-lg text-center">
+                    <h2 className="text-headline-md lg:text-headline-lg text-navy-blue">Une maîtrise complète de la chaîne de dialyse</h2>
                 </div>
                 <div className="grid grid-cols-1 gap-md md:grid-cols-3">
                     {EXPERTISES.map((e) => (
-                        <div key={e.title} className="rounded-xl border border-outline-variant bg-white p-lg text-center transition-shadow hover:shadow-lg">
+                        <div key={e.title} className="rounded-xl border border-outline-variant bg-white p-md lg:p-lg text-center transition-shadow hover:shadow-lg">
                             <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-tertiary/10 text-tertiary">
                                 <span className="material-symbols-outlined text-[28px]" aria-hidden="true">{e.icon}</span>
                             </div>
@@ -117,10 +117,10 @@ export default function PoleHemodialyse({ projectTypes }: Props) {
             </section>
 
             {/* ── Pourquoi + engagements ───────────────────────── */}
-            <section className="bg-navy-blue py-xl text-white">
-                <div className="mx-auto grid max-w-7xl grid-cols-1 gap-lg px-margin lg:grid-cols-2">
+            <section className="bg-navy-blue py-lg lg:py-xl text-white">
+                <div className="mx-auto grid max-w-7xl grid-cols-1 gap-md lg:gap-lg px-sm sm:px-margin lg:grid-cols-2">
                     <div>
-                        <h2 className="text-headline-lg">Pourquoi choisir Transtechno pour votre centre ?</h2>
+                        <h2 className="text-headline-md lg:text-headline-lg">Pourquoi choisir Transtechno pour votre centre ?</h2>
                         <p className="mt-sm text-body-md text-white/80">
                             L'hémodialyse est une spécialité critique qui ne tolère aucune panne — un arrêt technique peut
                             mettre des vies en danger. C'est pourquoi nous avons structuré notre offre autour d'une
@@ -147,12 +147,12 @@ export default function PoleHemodialyse({ projectTypes }: Props) {
             </section>
 
             {/* ── Formulaire projet ────────────────────────────── */}
-            <section id="projet" className="mx-auto max-w-7xl px-margin py-xl">
-                <div className="grid grid-cols-1 gap-lg lg:grid-cols-12">
+            <section id="projet" className="mx-auto max-w-7xl px-sm sm:px-margin py-lg lg:py-xl">
+                <div className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-12">
                     {/* Aside */}
                     <div className="lg:col-span-4">
                         <p className="text-label-caps font-semibold uppercase text-primary">Notre engagement technique</p>
-                        <h2 className="mt-1 text-headline-lg text-navy-blue">Présentez-nous votre projet</h2>
+                        <h2 className="mt-1 text-headline-md lg:text-headline-lg text-navy-blue">Présentez-nous votre projet</h2>
                         <p className="mt-sm text-body-md text-secondary/80">
                             Directeur d'hôpital, promoteur de clinique ou investisseur ? Nos experts vous accompagnent dans le
                             dimensionnement technique et financier de votre futur centre de dialyse.
@@ -175,7 +175,7 @@ export default function PoleHemodialyse({ projectTypes }: Props) {
                                 Votre demande de projet a bien été transmise. Notre département d'ingénierie vous recontactera rapidement.
                             </div>
                         )}
-                        <form onSubmit={submit} className="rounded-xl border border-outline-variant bg-white p-lg">
+                        <form onSubmit={submit} className="rounded-xl border border-outline-variant bg-white p-md lg:p-lg">
                             <div className="grid grid-cols-1 gap-sm sm:grid-cols-2">
                                 <div>
                                     <label htmlFor="name" className={labelClass}>Nom complet *</label>
@@ -197,8 +197,8 @@ export default function PoleHemodialyse({ projectTypes }: Props) {
                                     {errors.phone && <p className="mt-1 text-body-sm text-primary">{errors.phone}</p>}
                                 </div>
                                 <div className="sm:col-span-2">
-                                    <label htmlFor="email" className={labelClass}>Email</label>
-                                    <input id="email" type="email" value={data.email} onChange={(e) => setData('email', e.target.value)} className={fieldClass} />
+                                    <label htmlFor="email" className={labelClass}>Email *</label>
+                                    <input id="email" type="email" value={data.email} onChange={(e) => setData('email', e.target.value)} className={fieldClass} required />
                                     {errors.email && <p className="mt-1 text-body-sm text-primary">{errors.email}</p>}
                                 </div>
                                 <div className="sm:col-span-2">

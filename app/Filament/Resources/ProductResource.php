@@ -55,7 +55,7 @@ class ProductResource extends Resource
                             ->label('Type de produit')
                             ->options([
                                 'equipement' => 'Équipement',
-                                'reactif' => 'Réactif (ABM)',
+                                'reactif' => 'Réactif',
                                 'consommable' => 'Consommable',
                             ])
                             ->default('equipement')
@@ -242,7 +242,7 @@ class ProductResource extends Resource
                     ])->columns(2),
 
                 // ── Onglet Réactif ABM (conditionnel) ────────────
-                Forms\Components\Tabs\Tab::make('Détails Réactif (ABM)')
+                Forms\Components\Tabs\Tab::make('Détails Réactif')
                     ->icon('heroicon-o-beaker')
                     ->visible(fn (Get $get) => $get('product_type') === 'reactif')
                     ->schema([
@@ -336,12 +336,12 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('brand.name')
                     ->label('Marque')
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('category.name')
                     ->label('Catégorie')
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('price_fcfa')
                     ->label('Prix')
@@ -379,7 +379,7 @@ class ProductResource extends Resource
                 Tables\Columns\IconColumn::make('is_featured')
                     ->label('Vedette')
                     ->boolean()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->defaultSort('order')
             ->filters([

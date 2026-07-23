@@ -64,17 +64,17 @@ export default function Actualites({ featured, articles, categories, currentCate
             </Head>
 
             {/* ── Hero ─────────────────────────────────────────── */}
-            <section className="bg-navy-blue py-xl text-white">
-                <div className="mx-auto max-w-7xl px-margin">
-                    <h1 className="max-w-3xl text-headline-xl">Actualités &amp; Innovations Médicales</h1>
-                    <p className="mt-sm max-w-2xl text-body-lg text-white/80">
+            <section className="bg-navy-blue py-lg lg:py-xl text-white">
+                <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                    <h1 className="max-w-3xl text-2xl font-bold sm:text-4xl lg:text-headline-xl">Actualités &amp; Innovations Médicales</h1>
+                    <p className="mt-sm max-w-2xl text-body-md text-white/80 lg:text-body-lg">
                         Suivez l'évolution du plateau technique au Cameroun : nos dernières installations, événements et
                         conseils d'experts pour optimiser vos équipements médicaux.
                     </p>
                 </div>
             </section>
 
-            <main className="mx-auto max-w-7xl px-margin py-lg">
+            <main className="mx-auto max-w-7xl px-sm sm:px-margin py-lg">
                 {/* ── Filtres catégories ──────────────────────── */}
                 <div className="mb-lg flex flex-wrap gap-2">
                     <button
@@ -101,7 +101,7 @@ export default function Actualites({ featured, articles, categories, currentCate
                 {featured && (
                     <Link
                         href={`/news/${featured.slug}`}
-                        className="group mb-lg block overflow-hidden rounded-xl border border-outline-variant bg-white md:flex"
+                        className="group mb-md lg:mb-lg block overflow-hidden rounded-xl border border-outline-variant bg-white md:flex"
                     >
                         <div className="h-56 w-full overflow-hidden md:h-auto md:w-2/5">
                             {featured.image ? (
@@ -115,7 +115,7 @@ export default function Actualites({ featured, articles, categories, currentCate
                                 <CoverFallback />
                             )}
                         </div>
-                        <div className="flex flex-col justify-center p-lg md:w-3/5">
+                        <div className="flex flex-col justify-center p-md lg:p-lg md:w-3/5">
                             <div className="mb-xs flex items-center gap-2 text-body-sm text-secondary/70">
                                 <span className="material-symbols-outlined text-[18px] text-tertiary" aria-hidden="true">
                                     calendar_today
@@ -128,7 +128,7 @@ export default function Actualites({ featured, articles, categories, currentCate
                                     </>
                                 )}
                             </div>
-                            <h2 className="text-headline-lg text-navy-blue transition-colors group-hover:text-primary">
+                            <h2 className="text-headline-md lg:text-headline-lg text-navy-blue transition-colors group-hover:text-primary">
                                 {featured.title}
                             </h2>
                             {featured.excerpt && (
@@ -144,7 +144,7 @@ export default function Actualites({ featured, articles, categories, currentCate
 
                 {/* ── Grille ──────────────────────────────────── */}
                 {articles.data.length === 0 ? (
-                    <div className="rounded-xl border border-dashed border-outline-variant bg-white p-xl text-center">
+                    <div className="rounded-xl border border-dashed border-outline-variant bg-white p-md lg:p-xl text-center">
                         <span className="material-symbols-outlined text-[48px] text-secondary/30" aria-hidden="true">
                             news
                         </span>
@@ -200,7 +200,7 @@ export default function Actualites({ featured, articles, categories, currentCate
 
                 {/* ── Pagination ──────────────────────────────── */}
                 {articles.links.length > 3 && (
-                    <div className="mt-lg flex flex-wrap justify-center gap-1">
+                    <div className="mt-md lg:mt-lg flex flex-wrap justify-center gap-1">
                         {articles.links.map((link, i) => (
                             <button
                                 key={i}

@@ -314,7 +314,7 @@ export default function Catalogue({
 
             <div className="mx-auto flex max-w-7xl">
                 {/* ── Sidebar filtres (desktop) ─────────────────────── */}
-                <aside className="hidden w-72 shrink-0 flex-col gap-sm self-start border-r border-outline-variant bg-surface-2 p-sm lg:flex">
+                <aside className="hidden w-72 shrink-0 flex-col gap-sm self-start border-r border-outline-variant bg-surface-2 p-sm lg:flex lg:sticky lg:top-[140px] lg:max-h-[calc(100vh-160px)] lg:overflow-y-auto">
                     {filtersBody}
                 </aside>
 
@@ -324,7 +324,7 @@ export default function Catalogue({
                     <button
                         type="button"
                         onClick={() => setMobileFiltersOpen((v) => !v)}
-                        className="mb-md flex h-10 items-center gap-1 rounded border border-outline-variant px-3 text-body-sm text-secondary lg:hidden"
+                        className="mb-md flex min-h-[44px] items-center gap-1 rounded border border-outline-variant px-3 text-body-sm text-secondary lg:hidden"
                     >
                         <span className="material-symbols-outlined text-[18px]" aria-hidden="true">
                             tune
@@ -336,21 +336,21 @@ export default function Catalogue({
                     )}
 
                     {/* Bandeau de catégorie */}
-                    <section className="relative mb-lg flex h-64 w-full items-center overflow-hidden rounded-xl border border-outline-variant bg-dark-navy px-lg shadow-sm">
+                    <section className="relative mb-lg flex min-h-[180px] w-full items-center overflow-hidden rounded-xl border border-outline-variant bg-dark-navy px-md sm:px-lg shadow-sm">
                         <span
                             className="material-symbols-outlined pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 text-[220px] text-white/5"
                             aria-hidden="true"
                         >
                             {currentCategory?.icon || 'medical_services'}
                         </span>
-                        <div className="relative z-10 max-w-lg">
+                        <div className="relative z-10 max-w-lg py-md">
                             <span className="mb-xs inline-block rounded bg-primary-container px-xs py-1 text-label-caps uppercase text-white">
                                 {currentCategory ? 'Catégorie' : scopeLabel}
                             </span>
-                            <h1 className="mb-xs text-headline-xl leading-tight text-white">
+                            <h1 className="mb-xs text-2xl font-bold leading-tight text-white sm:text-4xl lg:text-headline-xl">
                                 {currentCategory?.name ?? defaultTitle}
                             </h1>
-                            <p className="text-body-md text-white/80">
+                            <p className="text-body-sm text-white/80 sm:text-body-md">
                                 {currentCategory?.description ?? defaultDesc}
                             </p>
                         </div>
@@ -414,7 +414,7 @@ export default function Catalogue({
                                             </span>
                                             {product.product_type === 'reactif' && (
                                                 <span className="absolute right-2 top-2 z-10 rounded bg-orange-100 px-2 py-0.5 text-[10px] font-bold uppercase text-orange-700">
-                                                    Réactif ABM
+                                                    Réactif
                                                 </span>
                                             )}
                                             <Link
@@ -491,12 +491,12 @@ export default function Catalogue({
                                 <Link
                                     href={products.prev_page_url}
                                     preserveScroll
-                                    className="flex h-10 items-center rounded-lg border border-outline-variant bg-white px-3 text-body-sm text-secondary hover:border-tertiary"
+                                    className="flex min-h-[44px] items-center rounded-lg border border-outline-variant bg-white px-3 text-body-sm text-secondary hover:border-tertiary"
                                 >
                                     Précédent
                                 </Link>
                             ) : (
-                                <span className="flex h-10 items-center rounded-lg border border-outline-variant bg-surface-2 px-3 text-body-sm text-secondary/40">
+                                <span className="flex min-h-[44px] items-center rounded-lg border border-outline-variant bg-surface-2 px-3 text-body-sm text-secondary/40">
                                     Précédent
                                 </span>
                             )}
@@ -507,12 +507,12 @@ export default function Catalogue({
                                 <Link
                                     href={products.next_page_url}
                                     preserveScroll
-                                    className="flex h-10 items-center rounded-lg border border-outline-variant bg-white px-3 text-body-sm text-secondary hover:border-tertiary"
+                                    className="flex min-h-[44px] items-center rounded-lg border border-outline-variant bg-white px-3 text-body-sm text-secondary hover:border-tertiary"
                                 >
                                     Suivant
                                 </Link>
                             ) : (
-                                <span className="flex h-10 items-center rounded-lg border border-outline-variant bg-surface-2 px-3 text-body-sm text-secondary/40">
+                                <span className="flex min-h-[44px] items-center rounded-lg border border-outline-variant bg-surface-2 px-3 text-body-sm text-secondary/40">
                                     Suivant
                                 </span>
                             )}

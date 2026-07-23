@@ -43,7 +43,7 @@ class CategoryResource extends Resource
                     ->label('Hiérarchie')
                     ->options([
                         'equipement' => 'Équipement',
-                        'reactif' => 'Réactif (ABM)',
+                        'reactif' => 'Réactif',
                     ])
                     ->default('equipement')
                     ->required()
@@ -132,7 +132,7 @@ class CategoryResource extends Resource
                     ->label('Hiérarchie')
                     ->options([
                         'equipement' => 'Équipement',
-                        'reactif' => 'Réactif (ABM)',
+                        'reactif' => 'Réactif',
                     ]),
                 Tables\Filters\TernaryFilter::make('is_active')->label('Statut'),
                 Tables\Filters\SelectFilter::make('parent_id')

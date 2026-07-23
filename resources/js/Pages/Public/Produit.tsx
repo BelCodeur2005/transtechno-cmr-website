@@ -111,7 +111,7 @@ export default function Produit({ product, related }: ProduitPageProps) {
 
             <div className="mx-auto max-w-7xl px-4 py-lg md:px-margin">
                 {/* Fil d'Ariane */}
-                <nav aria-label="Fil d'Ariane" className="mb-md text-body-sm text-secondary/70">
+                <nav aria-label="Fil d'Ariane" className="mb-md flex flex-wrap items-center gap-y-1 text-body-sm text-secondary/70">
                     <Link href="/" className="hover:text-tertiary">
                         Accueil
                     </Link>
@@ -132,7 +132,7 @@ export default function Produit({ product, related }: ProduitPageProps) {
                 </nav>
 
                 {/* Hero : galerie + infos */}
-                <section className="mb-xl grid grid-cols-1 gap-lg lg:grid-cols-2">
+                <section className="mb-lg lg:mb-xl grid grid-cols-1 gap-md lg:grid-cols-2 lg:gap-lg">
                     {/* Galerie */}
                     <div className="space-y-sm">
                         <div className="flex aspect-square items-center justify-center overflow-hidden rounded-lg border border-outline-variant bg-white">
@@ -292,8 +292,8 @@ export default function Produit({ product, related }: ProduitPageProps) {
                 </section>
 
                 {/* Onglets Description / Caractéristiques */}
-                <section className="mb-xl">
-                    <div className="mb-md flex gap-lg border-b border-outline-variant">
+                <section className="mb-lg lg:mb-xl">
+                    <div className="mb-md flex gap-md sm:gap-lg border-b border-outline-variant">
                         <button
                             type="button"
                             onClick={() => setTab('description')}
@@ -343,8 +343,8 @@ export default function Produit({ product, related }: ProduitPageProps) {
                             )}
                         </div>
                     ) : (
-                        <div className="overflow-hidden rounded-xl border border-outline-variant">
-                            <table className="w-full border-collapse text-left">
+                        <div className="overflow-x-auto rounded-xl border border-outline-variant">
+                            <table className="w-full min-w-[480px] border-collapse text-left">
                                 <thead className="bg-secondary uppercase text-white">
                                     <tr>
                                         <th className="p-md text-label-caps">Spécification</th>
@@ -402,7 +402,7 @@ export default function Produit({ product, related }: ProduitPageProps) {
                 </section>
 
                 {/* Blocs réassurance */}
-                <section className="mb-xl grid grid-cols-1 gap-md md:grid-cols-2 lg:grid-cols-4">
+                <section className="mb-lg lg:mb-xl grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
                     {REASSURANCE.map((r) => (
                         <div
                             key={r.title}
@@ -419,9 +419,9 @@ export default function Produit({ product, related }: ProduitPageProps) {
 
                 {/* Produits similaires */}
                 {related.length > 0 && (
-                    <section className="mb-xl">
-                        <h2 className="mb-lg border-l-4 border-primary pl-sm text-headline-md text-secondary">Produits similaires</h2>
-                        <div className="grid grid-cols-1 gap-md md:grid-cols-3">
+                    <section className="mb-lg lg:mb-xl">
+                        <h2 className="mb-md lg:mb-lg border-l-4 border-primary pl-sm text-headline-md text-secondary">Produits similaires</h2>
+                        <div className="grid grid-cols-1 gap-md sm:grid-cols-2 md:grid-cols-3">
                             {related.map((item) => (
                                 <Link
                                     key={item.slug}

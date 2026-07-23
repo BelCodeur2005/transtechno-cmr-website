@@ -113,12 +113,12 @@ export default function SavDemande({ interventionTypes }: Props) {
         return (
             <PublicLayout>
                 <Head title="Ticket SAV ouvert — Transtechno Cameroun" />
-                <section className="flex min-h-[70vh] items-center justify-center px-margin py-xl">
+                <section className="flex min-h-[70vh] items-center justify-center px-sm sm:px-margin py-lg lg:py-xl">
                     <div className="w-full max-w-lg text-center">
                         <div className="mx-auto mb-md flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
                             <span className="material-symbols-outlined text-[40px] text-green-600" aria-hidden="true">check_circle</span>
                         </div>
-                        <h1 className="text-headline-lg text-navy-blue">Ticket ouvert avec succès</h1>
+                        <h1 className="text-headline-md lg:text-headline-lg text-navy-blue">Ticket ouvert avec succès</h1>
                         {ticketRef && (
                             <div className="mt-sm inline-block rounded-lg bg-navy-blue px-md py-sm">
                                 <p className="text-label-caps uppercase text-white/70">Votre référence</p>
@@ -129,7 +129,7 @@ export default function SavDemande({ interventionTypes }: Props) {
                             Notre équipe technique prend en charge votre demande et vous recontacte dans les meilleurs délais.
                             Conservez votre référence pour le suivi.
                         </p>
-                        <div className="mt-lg flex flex-wrap justify-center gap-sm">
+                        <div className="mt-md lg:mt-lg flex flex-wrap justify-center gap-sm">
                             <Link
                                 href="/services-sav"
                                 className="inline-flex items-center gap-2 rounded-lg border border-outline-variant px-5 py-2.5 text-body-md font-semibold text-secondary hover:bg-surface-2"
@@ -162,7 +162,7 @@ export default function SavDemande({ interventionTypes }: Props) {
                 <div className="absolute inset-0 z-0 opacity-[0.06]"
                     style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}
                 />
-                <div className="relative z-10 mx-auto max-w-7xl px-margin">
+                <div className="relative z-10 mx-auto max-w-7xl px-sm sm:px-margin">
                     <Link
                         href="/services-sav"
                         className="mb-sm inline-flex items-center gap-1 text-body-sm font-semibold text-white/60 transition-colors hover:text-white"
@@ -176,8 +176,8 @@ export default function SavDemande({ interventionTypes }: Props) {
                                 <span className="h-2 w-2 animate-pulse rounded-full bg-green-400" aria-hidden="true" />
                                 <span className="text-label-caps font-semibold uppercase text-white">Assistance technique 24/7</span>
                             </div>
-                            <h1 className="text-headline-xl text-white">Ouvrir un ticket SAV</h1>
-                            <p className="mt-xs max-w-xl text-body-lg text-white/75">
+                            <h1 className="text-2xl font-bold text-white sm:text-4xl lg:text-headline-xl">Ouvrir un ticket SAV</h1>
+                            <p className="mt-xs max-w-xl text-body-md text-white/75 lg:text-body-lg">
                                 Décrivez votre panne ou besoin d'intervention. Un technicien certifié prend en charge votre demande sous 2 h.
                             </p>
                         </div>
@@ -197,7 +197,7 @@ export default function SavDemande({ interventionTypes }: Props) {
 
             {/* ── Processus (4 étapes) ────────────────────────────── */}
             <section className="border-b border-outline-variant bg-surface-2">
-                <div className="mx-auto max-w-7xl px-margin py-md">
+                <div className="mx-auto max-w-7xl px-sm sm:px-margin py-md">
                     <ol className="grid grid-cols-2 gap-sm lg:grid-cols-4">
                         {STEPS.map((s, i) => (
                             <li key={s.title} className="flex items-start gap-2">
@@ -215,11 +215,11 @@ export default function SavDemande({ interventionTypes }: Props) {
             </section>
 
             {/* ── Formulaire ──────────────────────────────────────── */}
-            <main className="mx-auto max-w-7xl px-margin py-xl">
-                <form onSubmit={submit} className="grid grid-cols-1 gap-lg lg:grid-cols-12">
+            <main className="mx-auto max-w-7xl px-sm sm:px-margin py-lg lg:py-xl">
+                <form onSubmit={submit} className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-12">
 
                     {/* ── Colonne principale ────────────────── */}
-                    <div className="flex flex-col gap-lg lg:col-span-8">
+                    <div className="flex flex-col gap-md lg:gap-lg lg:col-span-8">
 
                         {/* Section 1 : Contact */}
                         <section className="rounded-xl border border-outline-variant bg-white">
@@ -259,11 +259,12 @@ export default function SavDemande({ interventionTypes }: Props) {
                                     {errors.phone && <p className="mt-1 text-body-sm text-primary">{errors.phone}</p>}
                                 </div>
                                 <div>
-                                    <label htmlFor="email" className={labelClass}>Email</label>
+                                    <label htmlFor="email" className={labelClass}>Email *</label>
                                     <input
                                         id="email" type="email" value={data.email}
                                         onChange={(e) => setData('email', e.target.value)}
                                         placeholder="contact@etablissement.cm"
+                                        required
                                         className={fieldClass}
                                     />
                                     {errors.email && <p className="mt-1 text-body-sm text-primary">{errors.email}</p>}

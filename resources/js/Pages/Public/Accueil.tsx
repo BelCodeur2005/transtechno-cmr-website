@@ -116,7 +116,7 @@ export default function Accueil({ featured, partners, poles }: AccueilPageProps)
             </Head>
 
             {/* ── Hero ──────────────────────────────────────────── */}
-            <section className="relative overflow-hidden bg-secondary py-xl text-white lg:py-24">
+            <section className="relative overflow-hidden bg-secondary py-lg text-white lg:py-xl">
                 <div className="absolute inset-0 z-0" aria-hidden="true">
                     <img
                         src="/images/hero-bg.jpg"
@@ -125,18 +125,18 @@ export default function Accueil({ featured, partners, poles }: AccueilPageProps)
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/80 to-transparent" />
                 </div>
-                <div className="relative z-10 mx-auto max-w-7xl px-margin">
+                <div className="relative z-10 mx-auto max-w-7xl px-sm sm:px-margin">
                     <div className="max-w-3xl">
                         <span className="mb-md inline-block rounded-full bg-brand-red px-3 py-1 text-[10px] font-bold uppercase tracking-widest shadow-lg">
                             Depuis 2016 au Cameroun
                         </span>
-                        <h1 className="mb-md text-headline-xl leading-tight">Science technology and medical instrument</h1>
-                        <p className="mb-lg max-w-2xl text-body-lg leading-relaxed text-white/90">
+                        <h1 className="mb-md text-2xl font-bold leading-tight sm:text-4xl lg:text-headline-xl">Science technology and medical instrument</h1>
+                        <p className="mb-lg max-w-2xl text-body-md leading-relaxed text-white/90 lg:text-body-lg">
                             Leader dans l'importation et la commercialisation des équipements scientifiques de pointe. Nous
                             fournissons des solutions certifiées OMS pour les secteurs hospitaliers et de recherche.
                         </p>
 
-                        <form onSubmit={submitSearch} role="search" className="flex max-w-2xl flex-col gap-md sm:flex-row">
+                        <form onSubmit={submitSearch} role="search" className="flex max-w-2xl flex-col gap-sm sm:flex-row sm:gap-md">
                             <div className="relative flex flex-grow items-center overflow-hidden rounded-lg border border-white/20 bg-white shadow-xl">
                                 <span className="material-symbols-outlined ml-md text-secondary" aria-hidden="true">
                                     search
@@ -162,7 +162,7 @@ export default function Accueil({ featured, partners, poles }: AccueilPageProps)
                             </button>
                         </form>
 
-                        <div className="mt-lg flex flex-wrap items-center gap-lg">
+                        <div className="mt-md flex flex-wrap items-center gap-md lg:mt-lg lg:gap-lg">
                             {TRUST.map((t) => (
                                 <div key={t} className="flex items-center gap-xs">
                                     <span className="material-symbols-outlined text-brand-red" aria-hidden="true">
@@ -177,13 +177,13 @@ export default function Accueil({ featured, partners, poles }: AccueilPageProps)
             </section>
 
             {/* ── Spécialités ───────────────────────────────────── */}
-            <section aria-label="Domaines d'expertise" className="mx-auto max-w-7xl px-margin py-xl">
-                <div className="mb-xl text-center">
+            <section aria-label="Domaines d'expertise" className="mx-auto max-w-7xl px-sm sm:px-margin py-lg lg:py-xl">
+                <div className="mb-lg lg:mb-xl text-center">
                     <span className="mb-xs block text-label-caps uppercase tracking-widest text-brand-red">Domaines d'expertise</span>
                     <h2 className="text-headline-lg text-secondary">Solutions Médicales Globales</h2>
                     <div className="mx-auto mt-sm h-1 w-20 bg-brand-red" />
                 </div>
-                <div className="grid grid-cols-2 gap-md md:grid-cols-5">
+                <div className="grid grid-cols-2 gap-sm sm:gap-md md:grid-cols-5">
                     {poles.map((pole) => (
                         <Link
                             key={pole.slug}
@@ -209,8 +209,8 @@ export default function Accueil({ featured, partners, poles }: AccueilPageProps)
             </section>
 
             {/* ── À propos ──────────────────────────────────────── */}
-            <section className="border-y border-outline-variant/30 bg-white py-xl">
-                <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-xl px-margin lg:grid-cols-2">
+            <section className="border-y border-outline-variant/30 bg-white py-lg lg:py-xl">
+                <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-lg px-sm sm:px-margin lg:grid-cols-2 lg:gap-xl">
                     <div className="relative">
                         <div className="relative aspect-video overflow-hidden rounded-xl bg-secondary shadow-2xl">
                             <img
@@ -260,9 +260,9 @@ export default function Accueil({ featured, partners, poles }: AccueilPageProps)
 
             {/* ── Équipements phares ────────────────────────────── */}
             {featured.length > 0 && (
-                <section className="bg-surface-1 py-xl">
-                    <div className="mx-auto max-w-7xl px-margin">
-                        <div className="mb-xl flex flex-col items-end justify-between gap-md md:flex-row">
+                <section className="bg-surface-1 py-lg lg:py-xl">
+                    <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                        <div className="mb-lg lg:mb-xl flex flex-col items-start justify-between gap-md md:flex-row md:items-end">
                             <div>
                                 <span className="mb-xs block text-label-caps font-bold uppercase tracking-widest text-brand-red">Nos équipements</span>
                                 <h2 className="text-headline-lg text-secondary">Équipements Phares</h2>
@@ -275,7 +275,7 @@ export default function Accueil({ featured, partners, poles }: AccueilPageProps)
                             </Link>
                         </div>
 
-                        <div className="grid grid-cols-1 gap-lg md:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-md sm:gap-lg md:grid-cols-2 lg:grid-cols-3">
                             {/* 2 grandes cartes */}
                             {bigCards.map((p) => (
                                 <div
@@ -359,9 +359,9 @@ export default function Accueil({ featured, partners, poles }: AccueilPageProps)
 
             {/* ── Partenaires ───────────────────────────────────── */}
             {partners.length > 0 && (
-                <section className="overflow-hidden bg-secondary py-xl">
-                    <div className="mx-auto max-w-7xl px-margin">
-                        <div className="mb-xl text-center">
+                <section className="overflow-hidden bg-secondary py-lg lg:py-xl">
+                    <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                        <div className="mb-lg lg:mb-xl text-center">
                             <h2 className="mb-sm text-headline-lg uppercase tracking-wide text-white">Nos partenaires</h2>
                             <p className="text-body-md text-white/70">Collaborations stratégiques avec les leaders mondiaux</p>
                             <div className="mx-auto mt-md h-1 w-12 bg-brand-red" />

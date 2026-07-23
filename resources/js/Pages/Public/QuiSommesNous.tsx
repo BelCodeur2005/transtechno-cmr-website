@@ -83,7 +83,7 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
             </Head>
 
             {/* ── Hero ──────────────────────────────────────────── */}
-            <section className="relative flex min-h-[480px] items-center overflow-hidden bg-secondary py-xl lg:min-h-[560px]">
+            <section className="relative flex min-h-[360px] items-center overflow-hidden bg-secondary py-lg lg:min-h-[560px] lg:py-xl">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="/images/qsn-hero.jpg"
@@ -94,12 +94,12 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
                     <div className="absolute inset-0 bg-secondary/60 mix-blend-multiply" />
                     <div className="absolute inset-0 bg-gradient-to-r from-navy-blue/80 via-secondary/40 to-transparent" />
                 </div>
-                <div className="relative z-10 mx-auto w-full max-w-7xl px-margin">
+                <div className="relative z-10 mx-auto w-full max-w-7xl px-sm sm:px-margin">
                     <div className="max-w-3xl">
-                        <h1 className="mb-md text-headline-xl text-white">
+                        <h1 className="mb-md text-2xl font-bold text-white sm:text-4xl lg:text-headline-xl">
                             L'Excellence Technologique au Service de la Santé au Cameroun
                         </h1>
-                        <p className="border-l-4 border-primary pl-sm text-body-lg text-white/90">
+                        <p className="border-l-4 border-primary pl-sm text-body-md text-white/90 lg:text-body-lg">
                             Depuis 2016, nous redéfinissons les standards du plateau technique hospitalier à travers
                             l'innovation et la rigueur scientifique.
                         </p>
@@ -108,12 +108,12 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
             </section>
 
             {/* ── Histoire & Vision ─────────────────────────────── */}
-            <section className="bg-surface py-xl">
-                <div className="mx-auto grid max-w-7xl items-center gap-lg px-margin md:grid-cols-2">
+            <section className="bg-surface py-lg lg:py-xl">
+                <div className="mx-auto grid max-w-7xl items-center gap-md lg:gap-lg px-sm sm:px-margin md:grid-cols-2">
                     <div className="space-y-sm">
                         <span className="text-label-caps font-bold uppercase tracking-widest text-primary">Notre Héritage</span>
-                        <h2 className="text-headline-lg text-secondary">Expertise et Conformité Internationale</h2>
-                        <p className="text-body-lg leading-relaxed text-secondary/80">
+                        <h2 className="text-headline-md lg:text-headline-lg text-secondary">Expertise et Conformité Internationale</h2>
+                        <p className="text-body-md leading-relaxed text-secondary/80 lg:text-body-lg">
                             Transtechno Cameroun s'est imposé comme le partenaire de référence pour l'importation et la
                             distribution d'équipements scientifiques de pointe. Notre mission est d'équiper les centres de
                             santé camerounais avec des technologies de diagnostic et de soin conformes aux normes de
@@ -127,7 +127,7 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
                     </div>
                     <div className="relative">
                         <div className="absolute -inset-4 rounded-xl bg-secondary/5" aria-hidden="true" />
-                        <div className="relative z-10 h-[400px] w-full overflow-hidden rounded-lg shadow-xl">
+                        <div className="relative z-10 h-[260px] w-full overflow-hidden rounded-lg shadow-xl md:h-[400px]">
                             <img
                                 src="/images/qsn-heritage.jpg"
                                 alt="Salle d'hospitalisation équipée par Transtechno"
@@ -144,11 +144,11 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
             </section>
 
             {/* ── Nos Valeurs (TRIP) ────────────────────────────── */}
-            <section className="bg-white py-xl">
-                <div className="mx-auto max-w-7xl px-margin">
-                    <div className="mb-lg text-center">
+            <section className="bg-white py-lg lg:py-xl">
+                <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                    <div className="mb-md lg:mb-lg text-center">
                         <span className="text-label-caps font-bold uppercase tracking-widest text-primary">Nos valeurs</span>
-                        <h2 className="text-headline-lg text-secondary">L'esprit TRIP</h2>
+                        <h2 className="text-headline-md lg:text-headline-lg text-secondary">L'esprit TRIP</h2>
                         <p className="mx-auto mt-xs max-w-2xl text-body-md text-secondary/70">
                             Transtechno s'appuie passionnément sur ses valeurs fondamentales : Travail d'équipe, Respect,
                             Innovation, Intégrité et Professionnalisme.
@@ -159,7 +159,7 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
                         {VALUES.map((v) => (
                             <div
                                 key={v.letter}
-                                className="rounded-xl border border-outline-variant bg-surface-1 p-lg text-center transition-shadow hover:shadow-md"
+                                className="rounded-xl border border-outline-variant bg-surface-1 p-md lg:p-lg text-center transition-shadow hover:shadow-md"
                             >
                                 <div className={`mx-auto mb-md flex h-16 w-16 items-center justify-center rounded-full ${v.cls}`}>
                                     <span className="text-headline-lg font-bold">{v.letter}</span>
@@ -169,7 +169,7 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
                             </div>
                         ))}
                     </div>
-                    <p className="mx-auto mt-lg max-w-3xl text-center text-body-md italic text-secondary/70">
+                    <p className="mx-auto mt-md lg:mt-lg max-w-3xl text-center text-body-md italic text-secondary/70">
                         Transtechno est un fournisseur de solutions de santé à grande échelle, centré en continu sur les
                         besoins des patients et les besoins cliniques partout dans le pays — pour améliorer les conditions
                         médicales et réduire les coûts de santé.
@@ -178,10 +178,10 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
             </section>
 
             {/* ── Engagements ───────────────────────────────────── */}
-            <section className="bg-surface-2 py-xl">
-                <div className="mx-auto max-w-7xl px-margin">
-                    <div className="mb-lg text-center">
-                        <h2 className="text-headline-lg text-secondary">Nos Engagements Fondamentaux</h2>
+            <section className="bg-surface-2 py-lg lg:py-xl">
+                <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                    <div className="mb-md lg:mb-lg text-center">
+                        <h2 className="text-headline-md lg:text-headline-lg text-secondary">Nos Engagements Fondamentaux</h2>
                         <p className="mx-auto mt-xs max-w-xl text-body-md text-secondary/70">
                             L'alliance de la certification légale et de l'innovation sociale pour un Cameroun en meilleure
                             santé.
@@ -191,7 +191,7 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
                         {ENGAGEMENTS.map((e) => (
                             <div
                                 key={e.title}
-                                className={`group rounded-lg border border-outline-variant bg-white p-lg transition-all ${e.cardHover}`}
+                                className={`group rounded-lg border border-outline-variant bg-white p-md lg:p-lg transition-all ${e.cardHover}`}
                             >
                                 <div className={`mb-md flex h-12 w-12 items-center justify-center rounded-full transition-colors ${e.wrap}`}>
                                     <span className={`material-symbols-outlined ${e.iconCls}`} aria-hidden="true">
@@ -208,11 +208,11 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
 
             {/* ── Chiffres clés ─────────────────────────────────── */}
             <section className="bg-secondary py-lg text-white">
-                <div className="mx-auto max-w-7xl px-margin">
-                    <div className="grid grid-cols-1 gap-lg text-center md:grid-cols-3">
+                <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                    <div className="grid grid-cols-1 gap-md lg:gap-lg text-center md:grid-cols-3">
                         {STATS.map((s) => (
                             <div key={s.label}>
-                                <div className="text-headline-xl text-[#ffb4ab]">{s.value}</div>
+                                <div className="text-4xl font-bold text-[#ffb4ab] lg:text-headline-xl">{s.value}</div>
                                 <div className="text-label-caps uppercase opacity-80">{s.label}</div>
                             </div>
                         ))}
@@ -222,9 +222,9 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
 
             {/* ── Partenaires (carrousel) ───────────────────────── */}
             {partners.length > 0 && (
-                <section className="bg-white py-xl">
-                    <div className="mx-auto max-w-7xl px-margin">
-                        <h2 className="mb-lg text-center text-headline-md text-secondary">Ils nous font confiance</h2>
+                <section className="bg-white py-lg lg:py-xl">
+                    <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                        <h2 className="mb-md lg:mb-lg text-center text-headline-md text-secondary">Ils nous font confiance</h2>
                     </div>
                     {/* Défilement infini — pause au survol. masque dégradé sur les bords */}
                     <div className="marquee-group relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
@@ -248,10 +248,10 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
             )}
 
             {/* ── Localisation ──────────────────────────────────── */}
-            <section className="bg-surface-1 py-xl">
-                <div className="mx-auto grid max-w-7xl items-center gap-lg px-margin md:grid-cols-2">
+            <section className="bg-surface-1 py-lg lg:py-xl">
+                <div className="mx-auto grid max-w-7xl items-center gap-md lg:gap-lg px-sm sm:px-margin md:grid-cols-2">
                     <div className="space-y-md">
-                        <h2 className="text-headline-lg text-secondary">Retrouvez-nous à Douala</h2>
+                        <h2 className="text-headline-md lg:text-headline-lg text-secondary">Retrouvez-nous à Douala</h2>
                         <div className="flex items-start gap-sm">
                             <span className="material-symbols-outlined text-primary" aria-hidden="true">
                                 location_on
@@ -295,7 +295,7 @@ export default function QuiSommesNous({ partners }: QuiSommesNousProps) {
                             Nous contacter
                         </Link>
                     </div>
-                    <div className="h-[400px] overflow-hidden rounded-lg border border-outline-variant shadow-lg">
+                    <div className="h-[260px] overflow-hidden rounded-lg border border-outline-variant shadow-lg md:h-[400px]">
                         <iframe
                             title="Carte — Transtechno Cameroun, Douala"
                             src="https://www.google.com/maps?q=Transtechno+Cameroun,+Douala&output=embed"

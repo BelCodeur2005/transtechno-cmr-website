@@ -51,7 +51,7 @@ const DIFFERENTIATORS = [
     },
 ];
 
-export default function AbmReactifs({ requestTypes, domains }: Props) {
+export default function Reactifs({ requestTypes, domains }: Props) {
     const flash = (usePage().props as { flash?: { success?: string } }).flash;
     const [showSuccess, setShowSuccess] = useState(false);
 
@@ -96,7 +96,7 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
             </Head>
 
             {/* ── Hero (dégradé navy + double hélice ADN) ───────────── */}
-            <section className="relative flex min-h-[520px] items-center overflow-hidden bg-navy-blue py-xl">
+            <section className="relative flex min-h-[380px] items-center overflow-hidden bg-navy-blue py-lg lg:min-h-[520px] lg:py-xl">
                 {/* trame moléculaire */}
                 <div
                     className="absolute inset-0 z-0 opacity-[0.12]"
@@ -124,15 +124,15 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
                     })}
                 </svg>
 
-                <div className="relative z-10 mx-auto w-full max-w-7xl px-margin">
+                <div className="relative z-10 mx-auto w-full max-w-7xl px-sm sm:px-margin">
                     <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-label-caps font-semibold uppercase tracking-wide text-white backdrop-blur">
                         <span className="material-symbols-outlined text-[18px]" aria-hidden="true">handshake</span>
                         Partenaire officiel ABM
                     </span>
-                    <h1 className="mt-sm max-w-3xl text-headline-xl text-white">
+                    <h1 className="mt-sm max-w-3xl text-2xl font-bold text-white sm:text-4xl lg:text-headline-xl">
                         Réactifs de biologie moléculaire &amp; microbiologie
                     </h1>
-                    <p className="mt-sm max-w-2xl text-body-lg text-white/80">
+                    <p className="mt-sm max-w-2xl text-body-md text-white/80 lg:text-body-lg">
                         Transtechno distribue au Cameroun la gamme <strong className="font-semibold text-white">Applied Biological Materials (ABM)</strong> —
                         des consommables de laboratoire de haute qualité, livrés sous chaîne du froid et tracés au lot près.
                     </p>
@@ -151,7 +151,7 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
 
             {/* ── Bandeau partenariat ABM ──────────────────────────── */}
             <section className="border-b border-outline-variant bg-white">
-                <div className="mx-auto grid max-w-7xl grid-cols-1 gap-lg px-margin py-xl lg:grid-cols-12">
+                <div className="mx-auto grid max-w-7xl grid-cols-1 gap-md px-sm sm:px-margin py-lg lg:gap-lg lg:py-xl lg:grid-cols-12">
                     <div className="lg:col-span-7">
                         <p className="text-label-caps font-semibold uppercase text-primary">Le partenariat</p>
                         <h2 className="mt-1 text-headline-lg text-navy-blue">Applied Biological Materials</h2>
@@ -187,7 +187,7 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
             </section>
 
             {/* ── Gamme : domaines (pilotés par les catégories réactifs en BDD) ── */}
-            <section id="gamme" className="mx-auto max-w-7xl px-margin py-xl">
+            <section id="gamme" className="mx-auto max-w-7xl px-sm sm:px-margin py-lg lg:py-xl">
                 <div className="mb-lg max-w-2xl">
                     <p className="text-label-caps font-semibold uppercase text-primary">La gamme</p>
                     <h2 className="mt-1 text-headline-lg text-navy-blue">Nos domaines d'expertise</h2>
@@ -197,7 +197,7 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
                 </div>
                 <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-3">
                     {domains.map((d) => (
-                        <a key={d.slug} href={`/reactifs?categorie=${d.slug}`} className="group flex flex-col rounded-xl border border-outline-variant bg-white p-lg transition-shadow hover:shadow-lg">
+                        <a key={d.slug} href={`/reactifs?categorie=${d.slug}`} className="group flex flex-col rounded-xl border border-outline-variant bg-white p-md lg:p-lg transition-shadow hover:shadow-lg">
                             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-tertiary/10 text-tertiary transition-colors group-hover:bg-tertiary group-hover:text-white">
                                 <span className="material-symbols-outlined text-[26px]" aria-hidden="true">{d.icon}</span>
                             </div>
@@ -210,7 +210,7 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
                         </a>
                     ))}
                     {/* carte CTA catalogue */}
-                    <a href="/reactifs" className="flex flex-col justify-center rounded-xl border border-dashed border-tertiary/40 bg-tertiary/5 p-lg text-tertiary transition-colors hover:bg-tertiary/10">
+                    <a href="/reactifs" className="flex flex-col justify-center rounded-xl border border-dashed border-tertiary/40 bg-tertiary/5 p-md lg:p-lg text-tertiary transition-colors hover:bg-tertiary/10">
                         <span className="material-symbols-outlined text-[30px]" aria-hidden="true">arrow_circle_right</span>
                         <h3 className="mt-sm text-headline-md">Parcourir le catalogue réactifs</h3>
                         <p className="mt-xs text-body-md text-tertiary/80">Toutes les références disponibles, filtrables par domaine.</p>
@@ -219,8 +219,8 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
             </section>
 
             {/* ── Différenciateurs réactifs ────────────────────────── */}
-            <section className="bg-surface py-xl">
-                <div className="mx-auto max-w-7xl px-margin">
+            <section className="bg-surface py-lg lg:py-xl">
+                <div className="mx-auto max-w-7xl px-sm sm:px-margin">
                     <div className="mb-lg max-w-2xl">
                         <p className="text-label-caps font-semibold uppercase text-primary">Notre exigence</p>
                         <h2 className="mt-1 text-headline-lg text-navy-blue">Un réactif n'est pas un équipement</h2>
@@ -230,7 +230,7 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
                     </div>
                     <div className="grid grid-cols-1 gap-md sm:grid-cols-2 lg:grid-cols-4">
                         {DIFFERENTIATORS.map((d) => (
-                            <div key={d.title} className="rounded-xl border border-outline-variant bg-white p-lg">
+                            <div key={d.title} className="rounded-xl border border-outline-variant bg-white p-md lg:p-lg">
                                 <div className={`flex h-12 w-12 items-center justify-center rounded-full ${d.bg} ${d.accent} ring-1 ${d.ring}`}>
                                     <span className="material-symbols-outlined text-[26px]" aria-hidden="true">{d.icon}</span>
                                 </div>
@@ -243,8 +243,8 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
             </section>
 
             {/* ── Formulaire demande spécialisée ───────────────────── */}
-            <section id="demande" className="mx-auto max-w-7xl px-margin py-xl">
-                <div className="grid grid-cols-1 gap-lg lg:grid-cols-12">
+            <section id="demande" className="mx-auto max-w-7xl px-sm sm:px-margin py-lg lg:py-xl">
+                <div className="grid grid-cols-1 gap-md lg:gap-lg lg:grid-cols-12">
                     {/* Aside */}
                     <div className="lg:col-span-4">
                         <p className="text-label-caps font-semibold uppercase text-primary">Contact spécialisé</p>
@@ -279,7 +279,7 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
                                 Votre demande a bien été transmise. Notre spécialiste réactifs vous recontactera rapidement.
                             </div>
                         )}
-                        <form onSubmit={submit} className="rounded-xl border border-outline-variant bg-white p-lg">
+                        <form onSubmit={submit} className="rounded-xl border border-outline-variant bg-white p-md lg:p-lg">
                             <div className="grid grid-cols-1 gap-sm sm:grid-cols-2">
                                 <div>
                                     <label htmlFor="name" className={labelClass}>Nom complet *</label>
@@ -301,8 +301,8 @@ export default function AbmReactifs({ requestTypes, domains }: Props) {
                                     {errors.phone && <p className="mt-1 text-body-sm text-primary">{errors.phone}</p>}
                                 </div>
                                 <div className="sm:col-span-2">
-                                    <label htmlFor="email" className={labelClass}>Email</label>
-                                    <input id="email" type="email" value={data.email} onChange={(e) => setData('email', e.target.value)} className={fieldClass} />
+                                    <label htmlFor="email" className={labelClass}>Email *</label>
+                                    <input id="email" type="email" value={data.email} onChange={(e) => setData('email', e.target.value)} className={fieldClass} required />
                                     {errors.email && <p className="mt-1 text-body-sm text-primary">{errors.email}</p>}
                                 </div>
                                 <div className="sm:col-span-2">

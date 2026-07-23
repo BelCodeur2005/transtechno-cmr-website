@@ -62,10 +62,10 @@ export default function DemandeCotation({ sectors }: Props) {
             <Head title="Demande de cotation personnalisée" />
 
             {/* ── Hero ──────────────────────────────────────────── */}
-            <section className="border-b border-outline-variant bg-navy-blue py-xl text-white">
-                <div className="mx-auto max-w-7xl px-margin">
-                    <h1 className="max-w-3xl text-headline-xl">Demande de cotation personnalisée</h1>
-                    <p className="mt-sm max-w-2xl text-body-lg text-white/80">
+            <section className="border-b border-outline-variant bg-navy-blue py-lg lg:py-xl text-white">
+                <div className="mx-auto max-w-7xl px-sm sm:px-margin">
+                    <h1 className="max-w-3xl text-2xl font-bold sm:text-4xl lg:text-headline-xl">Demande de cotation personnalisée</h1>
+                    <p className="mt-sm max-w-2xl text-body-md text-white/80 lg:text-body-lg">
                         Accélérez la mise à jour de votre plateau technique. Remplissez ce formulaire pour recevoir une
                         offre technico-commerciale détaillée sous 24h à 48h.
                     </p>
@@ -82,7 +82,7 @@ export default function DemandeCotation({ sectors }: Props) {
                 </div>
             </section>
 
-            <main className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-lg px-margin py-lg lg:grid-cols-12">
+            <main className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-md px-sm sm:px-margin py-lg lg:gap-lg lg:grid-cols-12">
                 {/* ── Formulaire ──────────────────────────────── */}
                 <form onSubmit={submit} className="flex flex-col gap-md lg:col-span-8">
 
@@ -153,14 +153,11 @@ export default function DemandeCotation({ sectors }: Props) {
                                     id="email" type="email" value={data.email}
                                     onChange={(e) => setData('email', e.target.value)}
                                     placeholder="contact@etablissement.cm"
+                                    required
                                     className={`${fieldClass} ${errors.email ? 'border-primary ring-1 ring-primary/30' : ''}`}
                                 />
                                 {errors.email && <p className="mt-1 text-body-sm text-primary">{errors.email}</p>}
                             </div>
-                            <p className="text-body-sm text-secondary/60 sm:col-span-2">
-                                <span className="material-symbols-outlined mr-1 align-middle text-[14px] text-tertiary">info</span>
-                                Au moins l'un des deux (téléphone ou email) est requis pour vous recontacter.
-                            </p>
                         </div>
                     </section>
 
