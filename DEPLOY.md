@@ -316,13 +316,25 @@ Extensions requises : `pdo_mysql`, `mbstring`, `openssl`, `tokenizer`, `xml`, `c
 php artisan key:generate
 ```
 
-### 8.4 Installer les dépendances PHP (si non uploadées)
+### 8.4 Installer les dépendances PHP
+
+**Composer n'est pas installé globalement sur PlanetHoster.** Il faut le télécharger manuellement :
 
 ```bash
-composer install --no-dev --optimize-autoloader
+php -r "copy('https://getcomposer.org/installer', '/tmp/cs.php');" \
+  && php /tmp/cs.php --install-dir=/home/drsnkwraku --filename=composer.phar \
+  && rm /tmp/cs.php
 ```
 
-> Si `composer` n'est pas disponible en commande globale : `php ~/bin/composer.phar install ...`
+Ensuite installer les dépendances :
+
+```bash
+cd ~/laravel && php ~/composer.phar install --no-dev --optimize-autoloader
+```
+
+> **Important :** Ne jamais générer le `composer.lock` en local avec une version PHP différente de celle du serveur (PHP 8.2.27). Cela entraîne des conflits de versions lors du `composer install` sur le serveur. Toujours laisser composer résoudre les versions directement sur le serveur.
+
+> **Important :** Ne jamais uploader le dossier `vendor/composer/` depuis Windows vers le serveur Linux — les chemins absolus dans les fichiers autoload sont incompatibles entre OS. Toujours régénérer l'autoload via `composer install` sur le serveur.
 
 ### 8.5 Créer le lien symbolique du storage
 
@@ -513,22 +525,26 @@ Pour chaque mise à jour du code :
 # 1. En local : compiler les assets
 npm run build
 
-# 2. Uploader les fichiers modifiés (SFTP ou git pull via SSH)
-# Via SSH :
-cd ~/laravel && git pull origin main
+# 2. Uploader les fichiers modifiés via FileZilla vers ~/laravel/
+#    et les assets compilés vers ~/public_html/build/
+#    NE PAS uploader vendor/ ni vendor/composer/ (chemins Windows incompatibles)
 
-# 3. Installer les nouvelles dépendances PHP si nécessaire
-composer install --no-dev --optimize-autoloader
+# 3. Si composer.json ou composer.lock ont changé :
+cd ~/laravel && php ~/composer.phar install --no-dev --optimize-autoloader
 
 # 4. Exécuter les nouvelles migrations
 php artisan migrate --force
 
 # 5. Vider et reconstruire les caches
 php artisan optimize:clear
-php artisan optimize
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
 php artisan filament:cache-components
 php artisan icons:cache
 ```
+
+> `php ~/composer.phar` — le composer.phar est dans `/home/drsnkwraku/composer.phar`.
 
 > Lors d'une mise à jour avec migration critique, activer brièvement le mode maintenance :
 > ```bash
