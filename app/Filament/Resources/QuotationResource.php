@@ -175,6 +175,7 @@ class QuotationResource extends Resource
                         ->relationship()
                         ->label('')
                         ->columns(12)
+                        ->reorderable('sort_order')
                         ->schema([
                             Forms\Components\Select::make('product_id')
                                 ->label('Produit catalogue')

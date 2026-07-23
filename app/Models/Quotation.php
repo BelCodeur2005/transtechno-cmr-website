@@ -8,10 +8,10 @@ class Quotation extends Model {
     protected $casts = ["is_urgent" => "boolean","services_installation" => "boolean","services_formation" => "boolean","services_maintenance" => "boolean","vat_exempt" => "boolean"];
     public function client(): BelongsTo { return $this->belongsTo(Client::class); }
     public function assignedUser(): BelongsTo { return $this->belongsTo(User::class, "assigned_to"); }
-    public function items(): HasMany { return $this->hasMany(QuotationItem::class); }
+    public function items(): HasMany { return $this->hasMany(QuotationItem::class)->orderBy('sort_order'); }
     public function statusHistory(): HasMany { return $this->hasMany(QuotationStatusHistory::class)->latest(); }
     public function subtotalHt(): int { return $this->items->sum(fn($item) => $item->quantity * $item->unit_price_fcfa); }
-    public function servicesCost(): int { return (int) ($this->service_installation_cost + $this->service_formation_cost + $this->service_maintenance_cost); }
+    public function servicesCost(): int { return (int) (($this->services_installation ? $this->service_installation_cost : 0) + ($this->services_formation ? $this->service_formation_cost : 0) + ($this->services_maintenance ? $this->service_maintenance_cost : 0)); }
     public function totalTtc(): int {
         $subtotal = $this->subtotalHt();
         $afterDiscount = $subtotal - (int) round($subtotal * $this->discount_percent / 100);
