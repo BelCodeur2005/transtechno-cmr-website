@@ -1,6 +1,8 @@
 # Transtechno Cameroun — Site Web
 
-Site B2B de vente d'équipements médicaux, scientifiques et de laboratoire. Fondée en 2016 à Douala, Cameroun. Agréée Minsanté (arrêté N° 0683), certifiée OMS.
+Site B2B de vente d'équipements médicaux, scientifiques et de laboratoire pour Transtechno Cameroun, fournisseur basé à Douala depuis 2016, agréé par le ministère de la Santé publique.
+
+Projet client réalisé de la conception au déploiement : site public avec catalogue et demandes de devis, back-office complet pour l'équipe commerciale, le SAV et la rédaction.
 
 ## Stack technique
 
@@ -59,15 +61,15 @@ php artisan db:seed --class=BrandSeeder
 php artisan shield:generate --all
 ```
 
-## Compte admin par défaut (local)
+## Compte administrateur (local)
 
-| Champ | Valeur |
-|---|---|
-| Email | `admin@transtechno.cm` |
-| Mot de passe | `password` |
-| URL | `http://localhost/admin` |
+Le seeder crée un compte super-administrateur hors production. Son mot de passe est lu dans `.env` et le seeder s'arrête s'il n'est pas défini :
 
-> Changer impérativement le mot de passe avant déploiement en production.
+```env
+SEED_ADMIN_PASSWORD=un_mot_de_passe_solide
+```
+
+Le back-office est accessible sur `http://localhost/admin`.
 
 ## Structure des dossiers clés
 
@@ -174,8 +176,8 @@ chmod -R 775 storage bootstrap/cache
 - **Back-office Filament** — gestion cotations, catalogue, actualités, médiathèque, rôles
 - **Sitemap XML** — `/sitemap.xml` (articles, produits, catégories, pages statiques)
 
-## Contacts projet
+## Documentation
 
-- **Client :** Transtechno Cameroun — transtechno.cm@gmail.com
-- **Tél :** +237 674 64 53 54 / 699 67 40 36
-- **Guide admin :** voir `docs/guide-admin.md`
+- [Guide d'utilisation du back-office](docs/guide-admin.md)
+- [Rôles et permissions](docs/roles-permissions.md)
+- [Déploiement](DEPLOY.md) et [modules](MODULES.md)
